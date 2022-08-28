@@ -1,0 +1,97 @@
+import java.sql.Time;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TURNO")
+
+public class Turno {
+
+    public enum Estado {
+        PENDIENTE, CANCELADO, ASISTIDO, CERRADO_CONFORME, CERRADO_INCONFORME    	
+    }
+	
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @ManyToOne()
+    @JoinColumn(name = "CLIENTE_ID")
+    private Cliente cliente;
+    @ManyToOne()
+    @JoinColumn(name = "VEHICULO_ID")
+    private Vehiculo vehiculo;
+    @ManyToOne()
+    @JoinColumn(name = "MECANICO_ID")
+    private Mecanico mecanico;
+    private Date fecha;
+    private Time horario;
+    private Estado estado;
+    @ManyToOne()
+    @JoinColumn(name = "SERVICIO_ID")
+    private Servicio servicio;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public Mecanico getMecanico() {
+        return mecanico;
+    }
+
+    public void setMecanico(Mecanico mecanico) {
+        this.mecanico = mecanico;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Time getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Time horario) {
+        this.horario = horario;
+    }
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
+}

@@ -1,0 +1,68 @@
+package com.equipo.model;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "SERVICIO")
+public class Servicio {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Turno turno;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio")
+    private List<Servicios> servicios;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio")
+    private List<Insumo> insumos;
+    private boolean conforme;
+    private String comentarios;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+
+    public List<Servicios> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicios> servicios) {
+        this.servicios = servicios;
+    }
+
+    public List<Insumo> getInsumos() {
+        return insumos;
+    }
+
+    public void setInsumos(List<Insumo> insumos) {
+        this.insumos = insumos;
+    }
+
+    public boolean getConforme() {
+        return conforme;
+    }
+
+    public void setConforme(boolean conforme) {
+        this.conforme = conforme;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+}

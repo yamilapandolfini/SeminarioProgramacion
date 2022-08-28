@@ -1,0 +1,66 @@
+import java.util.List;
+
+//import java.persistence.Entity;
+
+//@Entity
+//@Table(name = "SERVICIOS")
+public class Servicios {
+
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Turno turno;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio")
+    private List<Servicios> servicios;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio")
+    private List<Insumo> insumos;
+    private Bool conforme;
+    private String comentarios;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+
+    public List<Servicios> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicios> servicios) {
+        this.servicios = servicios;
+    }
+
+    public List<Insumo> getInsumos() {
+        return insumos;
+    }
+
+    public void setInsumos(List<Insumo> insumos) {
+        this.insumos = insumos;
+    }
+
+    public Bool getConforme() {
+        return conforme;
+    }
+
+    public void setConforme(Bool conforme) {
+        this.conforme = conforme;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+}
