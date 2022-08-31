@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="14.0" layoutY="14.0">
@@ -23,19 +22,19 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Patente" />
-            <TextField prefHeight="25.0" prefWidth="151.0" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="Buscar " GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="lblPatente" text="Patente" />
+            <TextField fx:id="txtPatente" prefHeight="25.0" prefWidth="151.0" GridPane.columnIndex="1" />
+            <Button fx:id="btnBuscar" mnemonicParsing="false" text="Buscar " GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <TableView layoutX="14.0" layoutY="100.0" prefHeight="231.0" prefWidth="574.0">
         <columns>
-          <TableColumn prefWidth="122.0" text="Insumo" />
+          <TableColumn fx:id="tblInsumos" prefWidth="122.0" text="Insumo" />
           <TableColumn prefWidth="122.0" text="Marca" />
             <TableColumn prefWidth="149.0" text="Nro de Parte" />
             <TableColumn prefWidth="167.0" text="Acción" />
         </columns>
       </TableView>
-      <Button layoutX="241.0" layoutY="352.0" mnemonicParsing="false" text="Generar Constancia" />
+      <Button fx:id="btnConstancia" layoutX="241.0" layoutY="352.0" mnemonicParsing="false" text="Generar Constancia" />
    </children>
 </AnchorPane>
