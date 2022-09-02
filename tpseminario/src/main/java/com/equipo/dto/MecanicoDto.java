@@ -5,7 +5,7 @@ import com.equipo.model.Mecanico.Especialidad;
 
 public class MecanicoDto {
 	
-	public static MecanicoDto fromVehiculo(Mecanico mecanico) {
+	public static MecanicoDto fromMecanico(Mecanico mecanico) {
 			
 		MecanicoDto dto = new MecanicoDto();
 			

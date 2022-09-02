@@ -6,7 +6,7 @@ import com.equipo.model.Cliente;
 public class ClienteDto {
 
 
-	public static ClienteDto fromVehiculo(Cliente cliente) {
+	public static ClienteDto fromCliente(Cliente cliente) {
 		
 		ClienteDto dto = new ClienteDto();
 		
