@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="7.0" layoutY="6.0" prefHeight="90.0" prefWidth="231.0">
@@ -28,12 +27,12 @@
             <Label text="Fecha" />
             <DatePicker GridPane.columnIndex="1" />
             <Label text="Especialidad" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Generar" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Imprimir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="ddEspecialidad" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="btnGenerarInforme" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Generar" GridPane.rowIndex="2" />
+            <Button fx:id="btnImprimirInforme" mnemonicParsing="false" text="Imprimir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView layoutX="2.0" layoutY="98.0" prefHeight="298.0" prefWidth="594.0">
+      <TableView fx:id="tblServicio" layoutX="2.0" layoutY="98.0" prefHeight="298.0" prefWidth="594.0">
         <columns>
           <TableColumn prefWidth="77.0" text="Nro Servicio" />
           <TableColumn text="Fecha" />
