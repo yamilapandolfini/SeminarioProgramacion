@@ -46,15 +46,16 @@
       <menus>
         <Menu mnemonicParsing="false" text="Turnos">
           <items>
-            <MenuItem mnemonicParsing="false" text="Alta de Turno" />
-            <MenuItem mnemonicParsing="false" text="Consulta de Turnos" />
-                  <MenuItem mnemonicParsing="false" text="Registrar Asistencia" />
+            <MenuItem fx:id="mnuAltaTurno" mnemonicParsing="false" text="Alta de Turno" />
+            <MenuItem fx:id="mnuConsultaTurnos" mnemonicParsing="false" text="Consulta de Turnos" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Servicios">
           <items>
-            <MenuItem mnemonicParsing="false" text="Informe Diario" />
-            <MenuItem mnemonicParsing="false" text="Gestión de Planilla" />
+            <MenuItem fx:id="mnuConsultaServicio" mnemonicParsing="false" text="Consulta de Servicio" />
+            <MenuItem fx:id="mnuGestionPlanilla" mnemonicParsing="false" text="Gestión de Planilla" />
+                  <MenuItem fx:id="mnuInformeDiario" mnemonicParsing="false" text="Informe Diario" />
+                  <MenuItem fx:id="mnuInformeMensual" mnemonicParsing="false" text="Informe Mensual" />
           </items>
         </Menu>
       </menus>
