@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,21 +26,20 @@
          <children>
             <Label text="Fecha" />
             <DatePicker fx:id="dpkFecha" GridPane.columnIndex="1" />
-            <Label text="Especialidad" GridPane.rowIndex="1" />
-            <ComboBox fx:id="ddEspecialidad" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="btnGenerarInforme" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Generar" GridPane.rowIndex="2" />
-            <Button fx:id="btnImprimirInforme" mnemonicParsing="false" text="Imprimir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Turno" GridPane.rowIndex="1" />
+            <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Buscar" GridPane.rowIndex="2" />
+            <TextField fx:id="txtTurno" prefHeight="25.0" prefWidth="69.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TableView fx:id="tblServicio" layoutX="2.0" layoutY="98.0" prefHeight="298.0" prefWidth="594.0">
+      <TableView fx:id="tblTurnos" layoutX="2.0" layoutY="98.0" prefHeight="298.0" prefWidth="594.0">
         <columns>
-          <TableColumn prefWidth="77.0" text="Nro Servicio" />
-          <TableColumn text="Fecha" />
-            <TableColumn prefWidth="69.0" text="Conforme" />
+          <TableColumn prefWidth="77.0" text="Nro Turno" />
+          <TableColumn text="Cliente" />
+            <TableColumn prefWidth="69.0" text="Patente" />
             <TableColumn prefWidth="93.0" text="Mecánico" />
-            <TableColumn prefWidth="75.0" text="Cliente" />
-            <TableColumn prefWidth="85.0" text="Patente" />
-            <TableColumn prefWidth="113.0" text="Seguro" />
+            <TableColumn prefWidth="75.0" text="Horario" />
+            <TableColumn prefWidth="85.0" text="Estado" />
+            <TableColumn prefWidth="113.0" text="Acciones" />
         </columns>
       </TableView>
    </children>

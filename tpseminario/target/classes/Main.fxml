@@ -46,8 +46,8 @@
       <menus>
         <Menu mnemonicParsing="false" text="Turnos">
           <items>
-            <MenuItem fx:id="mnuAltaTurno" mnemonicParsing="false" text="Alta de Turno" />
-            <MenuItem fx:id="mnuConsultaTurnos" mnemonicParsing="false" text="Consulta de Turnos" />
+            <MenuItem fx:id="slcAltaTurno" mnemonicParsing="false" text="Alta de Turno" />
+            <MenuItem fx:id="slcConsultaTurno" mnemonicParsing="false" text="Consulta de Turnos" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Servicios">

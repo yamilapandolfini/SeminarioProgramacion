@@ -32,7 +32,7 @@
           <TableColumn fx:id="tblInsumos" prefWidth="122.0" text="Insumo" />
           <TableColumn prefWidth="122.0" text="Marca" />
             <TableColumn prefWidth="149.0" text="Nro de Parte" />
-            <TableColumn prefWidth="167.0" text="Acción" />
+            <TableColumn prefWidth="167.0" text="Precio" />
         </columns>
       </TableView>
       <Button fx:id="btnConstancia" layoutX="268.0" layoutY="451.0" mnemonicParsing="false" text="Generar Constancia" />

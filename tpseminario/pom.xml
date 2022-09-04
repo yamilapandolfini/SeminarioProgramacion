@@ -55,7 +55,7 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>${javafx.maven.plugin.version}</version>
 				<configuration>
-					<mainClass>hopfield.Main</mainClass>
+					<mainClass>com.equipo.seminario.Main</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
