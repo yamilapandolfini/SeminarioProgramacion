@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.160676532769556" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.160676532769556" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.equipo.controller.MostrarServicioController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="95.0" prefWidth="736.0">
          <children>
@@ -60,10 +61,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnBuscar1" mnemonicParsing="false" text="Cargar Planilla" GridPane.columnIndex="1" />
-                  <Button fx:id="btnBuscar11" mnemonicParsing="false" text="Cerrar Planilla" GridPane.columnIndex="2" />
-                  <Button fx:id="btnBuscar12" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="3" />
-                  <Button fx:id="btnBuscar111" mnemonicParsing="false" text="Imprimir Ficha" />
+                  <Button fx:id="btnCargarPlanilla" mnemonicParsing="false" onAction="#clkCargarPlanilla" text="Cargar Planilla" GridPane.columnIndex="1" />
+                  <Button fx:id="btnCerraPlanilla" mnemonicParsing="false" onAction="#clkCerrarPlanilla" text="Cerrar Planilla" GridPane.columnIndex="2" />
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="btnImprimi" mnemonicParsing="false" onAction="#clkImprimirFicha" text="Imprimir Ficha" />
                </children>
             </GridPane>
          </children></AnchorPane>
