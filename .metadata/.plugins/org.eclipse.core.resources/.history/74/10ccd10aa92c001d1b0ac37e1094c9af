@@ -1,0 +1,21 @@
+package ;
+
+import javafx.fxml.FXML;
+
+import javafx.scene.control.MenuItem;
+
+public class MainController {
+	@FXML
+	private MenuItem mnuAltaTurno;
+	@FXML
+	private MenuItem mnuConsultaTurnos;
+	@FXML
+	private MenuItem mnuConsultaServicio;
+	@FXML
+	private MenuItem mnuGestionPlanilla;
+	@FXML
+	private MenuItem mnuInformeDiario;
+	@FXML
+	private MenuItem mnuInformeMensual;
+
+}

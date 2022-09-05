@@ -47,7 +47,7 @@
       <Label fx:id="lblApellido" text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="11" />
       <Label fx:id="lblNombre" text="Nombre" GridPane.columnIndex="1" GridPane.rowIndex="12" />
       <Label fx:id="lblNumeroPoliza" text="Número de póliza" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-      <Button fx:id="btnGenerarTurno" alignment="CENTER" mnemonicParsing="false" text="Generar turno" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+      <Button fx:id="btnGenerarFicha" alignment="CENTER" mnemonicParsing="false" text="Generar ficha" GridPane.columnIndex="1" GridPane.rowIndex="16" />
       <Label fx:id="lblEmpresaAseguradora" text="Empresa aseguradora" GridPane.columnIndex="1" GridPane.rowIndex="14" />
       <TextField fx:id="txtFecha" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <TextField fx:id="txtHorario" GridPane.columnIndex="2" GridPane.rowIndex="3" />
@@ -60,9 +60,7 @@
       <TextField fx:id="txtNombre" GridPane.columnIndex="2" GridPane.rowIndex="12" />
       <TextField fx:id="txtNumeroPoliza" GridPane.columnIndex="2" GridPane.rowIndex="13" />
       <TextField fx:id="txtEmpresaAseguradora" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-      <Button fx:id="btnGenerarImprimirTurno" mnemonicParsing="false" text="Generar e Imprimir turno" GridPane.columnIndex="2" GridPane.rowIndex="16" />
       <Button fx:id="btnCancelar" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="4" GridPane.rowIndex="16" />
-      <Button fx:id="btnConsultarDisponibilidad" mnemonicParsing="false" text="Consultar disponibilidad" GridPane.columnIndex="4" GridPane.rowIndex="2" />
       <Label fx:id="lblEspecialidad" text="Especialidad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Label fx:id="lblMecanico" text="Mecánico" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <TextField fx:id="txtEspecialidad" GridPane.columnIndex="2" GridPane.rowIndex="4" />
