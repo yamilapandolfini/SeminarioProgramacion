@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<SplitPane dividerPositions="0.160676532769556" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.160676532769556" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="95.0" prefWidth="736.0">
          <children>
-            <GridPane prefHeight="73.0" prefWidth="823.0">
+            <GridPane prefHeight="73.0" prefWidth="659.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="0.0" prefWidth="12.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="72.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="0.0" prefWidth="172.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="8.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="10.0" prefWidth="551.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="87.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="0.0" prefWidth="176.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="8.0" prefWidth="11.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="10.0" prefWidth="399.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -37,9 +37,9 @@
                </children>
             </GridPane>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="736.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="723.0">
          <children>
-            <TableView fx:id="tblServicios" prefHeight="394.0" prefWidth="823.0">
+            <TableView fx:id="tblServicios" prefHeight="353.0" prefWidth="659.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Nro Servicio" />
                 <TableColumn prefWidth="140.0" text="Nombre Cliente" />
@@ -47,9 +47,25 @@
                   <TableColumn prefWidth="140.0" text="Nombre Mecánico" />
                   <TableColumn text="Horario" />
                   <TableColumn prefWidth="82.0" text="Estado" />
-                  <TableColumn prefWidth="165.0" text="Acciones" />
               </columns>
             </TableView>
+            <GridPane layoutY="353.0" prefHeight="43.0" prefWidth="658.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnBuscar1" mnemonicParsing="false" text="Cargar Planilla" GridPane.columnIndex="1" />
+                  <Button fx:id="btnBuscar11" mnemonicParsing="false" text="Cerrar Planilla" GridPane.columnIndex="2" />
+                  <Button fx:id="btnBuscar12" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="3" />
+                  <Button fx:id="btnBuscar111" mnemonicParsing="false" text="Imprimir Ficha" />
+               </children>
+            </GridPane>
          </children></AnchorPane>
   </items>
 </SplitPane>
