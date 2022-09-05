@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.1416490486257928" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.1416490486257928" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.equipo.controller.MostrarTurnosController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="95.0" prefWidth="736.0">
          <children>
@@ -61,11 +62,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnBuscar1" mnemonicParsing="false" text="Nuevo Turno" />
-                  <Button fx:id="btnBuscar11" mnemonicParsing="false" text="Editar Turno" GridPane.columnIndex="1" />
-                  <Button fx:id="btnBuscar111" mnemonicParsing="false" text="Eliminar Turno" GridPane.columnIndex="2" />
-                  <Button fx:id="btnBuscar1111" mnemonicParsing="false" text="Registrar Asistencia" GridPane.columnIndex="3" />
-                  <Button fx:id="btnBuscar11111" mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="4" />
+                  <Button fx:id="btnNuevoTurno" mnemonicParsing="false" onAction="#clkNuevoTurno" text="Nuevo Turno" />
+                  <Button fx:id="btnEditarTurno" mnemonicParsing="false" onAction="#clkEditarTurno" text="Editar Turno" GridPane.columnIndex="1" />
+                  <Button fx:id="btnEliminarTurno" mnemonicParsing="false" onAction="#clkEliminarTurno" text="Eliminar Turno" GridPane.columnIndex="2" />
+                  <Button fx:id="btnRegistrarAsistencia" mnemonicParsing="false" onAction="#clkRegistrarAsistencia" text="Registrar Asistencia" GridPane.columnIndex="3" />
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                </children>
             </GridPane>
          </children></AnchorPane>

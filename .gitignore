@@ -18,3 +18,4 @@ tpseminario/target/classes/InformeMensual.fxml
 tpseminario/target/classes/Main.fxml
 tpseminario/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 tpseminario/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+*.class
