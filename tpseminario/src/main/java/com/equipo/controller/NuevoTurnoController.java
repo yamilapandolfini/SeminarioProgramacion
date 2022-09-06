@@ -78,6 +78,8 @@ public class NuevoTurnoController {
 	private TextField txtEspecialidad;
 	@FXML
 	private TextField txtMecanico;
+	@FXML
+	private Button btnConsultarDisponibilidad;
 
 	// Event Listener on Button[#btnGenerarFicha].onAction
 	@FXML
@@ -94,6 +96,32 @@ public class NuevoTurnoController {
 			
 			stage.setScene(scene);
 			stage.setTitle("Imprimir ficha");
+			stage.show();
+			
+			stage.setOnCloseRequest(e -> controlador.closeWindow());
+			
+			Stage myStage = (Stage) this.lblNroTurno.getScene().getWindow();
+			
+			myStage.close();
+		} catch (IOException ex) {
+			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	
+	@FXML
+	public void clkConsultarDisponibilidad(ActionEvent event) throws IOException {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ConsultarDisponibilidad.fxml"));
+			
+			Parent root = loader.load();
+			
+			ConsultarDisponibilidadController controlador = loader.getController();
+			
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			
+			stage.setScene(scene);
+			stage.setTitle("Consultar disponibilidad");
 			stage.show();
 			
 			stage.setOnCloseRequest(e -> controlador.closeWindow());

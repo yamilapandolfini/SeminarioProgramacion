@@ -44,7 +44,7 @@ public class ConsultarDisponibilidadController {
 
 	// Event Listener on Button[#btnCancelar].onAction
 	@FXML
-	public void closeWindow(ActionEvent event) {
+	public void closeWindow() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/MostrarTurnos.fxml"));
 			
