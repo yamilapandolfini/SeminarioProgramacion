@@ -70,5 +70,6 @@
       <Label fx:id="lblMecanico" text="Mecánico" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <TextField fx:id="txtEspecialidad" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <TextField fx:id="txtMecanico" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Button fx:id="btnConsultarDisponibilidad" mnemonicParsing="false" onAction="#clkConsultarDisponibilidad" text="Consultar disponibilidad" GridPane.columnIndex="4" GridPane.rowIndex="2" />
    </children>
 </GridPane>
