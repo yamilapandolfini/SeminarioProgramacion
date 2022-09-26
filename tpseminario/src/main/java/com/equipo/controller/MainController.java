@@ -6,12 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javafx.event.ActionEvent;
 
 public class MainController {
 	@FXML
@@ -30,7 +29,9 @@ public class MainController {
 	// Event Listener on Button[#btnAltaTurno].onAction
 	@FXML
 	public void clkAltaTurno(ActionEvent event) throws IOException {
+	
 		try {
+				
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/NuevoTurno.fxml"));
 			
 			Parent root = loader.load();
@@ -184,8 +185,12 @@ public class MainController {
 			stage.setOnCloseRequest(e -> controlador.closeWindow());
 			
 			Stage myStage = (Stage) this.btnInformeMensual.getScene().getWindow();
-			
 			myStage.close();
+
+			GenerarInformeMensualController generarInformeMensualController = new GenerarInformeMensualController();
+			generarInformeMensualController.initialize();
+			
+			
 		} catch (IOException ex) {
 			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
 		}

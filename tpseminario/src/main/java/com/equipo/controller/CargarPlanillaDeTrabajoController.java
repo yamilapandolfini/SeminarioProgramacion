@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.equipo.dao.InsumoDao;
+import com.equipo.model.Insumo;
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
@@ -26,15 +31,15 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	private Button btnBuscar;
 	@FXML
-	private TableView tblInsumos;
+	private TableView<Insumo> tblInsumos;
 	@FXML
-	private TableColumn tblInsumo;
+	private TableColumn<Insumo, String> tblNombre;
 	@FXML
-	private TableColumn tblMarca;
+	private TableColumn<Insumo, String> tblMarca;
 	@FXML
-	private TableColumn tblParte;
+	private TableColumn<Insumo, String> tblModelo;
 	@FXML
-	private TableColumn tblPrecio;
+	private TableColumn<Insumo, Integer> tblNumeroParte;
 	@FXML
 	private Button btnConstancia;
 	@FXML
@@ -57,7 +62,22 @@ public class CargarPlanillaDeTrabajoController {
 	private Button btnCerrar;
 	@FXML
 	private Button btnCancelar;
-
+	
+	@FXML
+	public void initialize() {
+		
+		InsumoDao insumo = new InsumoDao();
+		ObservableList<Insumo> list = insumo.obtenerTodos();
+		
+		tblNombre.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
+		tblMarca.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
+		tblModelo.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
+		tblNumeroParte.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
+		
+		tblInsumos.setItems(list);
+		
+	}
+	
 	public void closeWindow() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));

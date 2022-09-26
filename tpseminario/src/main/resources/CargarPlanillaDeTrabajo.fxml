@@ -30,10 +30,10 @@
       </GridPane>
       <TableView fx:id="tblInsumos" layoutX="14.0" layoutY="95.0" prefHeight="130.0" prefWidth="574.0">
         <columns>
-          <TableColumn fx:id="tblInsumo" prefWidth="122.0" text="Insumo" />
+          <TableColumn fx:id="tblNombre" prefWidth="122.0" text="Nombre" />
           <TableColumn fx:id="tblMarca" prefWidth="122.0" text="Marca" />
-            <TableColumn fx:id="tblParte" prefWidth="149.0" text="Nro de Parte" />
-            <TableColumn fx:id="tblPrecio" prefWidth="167.0" text="Precio" />
+            <TableColumn fx:id="tblModelo" prefWidth="149.0" text="Modelo" />
+            <TableColumn fx:id="tblNumeroParte" prefWidth="167.0" text="Numero de parte" />
         </columns>
       </TableView>
       <Button fx:id="btnConstancia" layoutX="268.0" layoutY="451.0" mnemonicParsing="false" text="Generar Constancia" />

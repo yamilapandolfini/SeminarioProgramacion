@@ -14,12 +14,19 @@ public class Mecanico {
         FRENOS, ELECTRICIDAD, TREN_DELANTERO_AMORT, ENCENDIDO_CARBURACION, CHAPA_PINTURA, MECANICA_GRAL    	
     }
 
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
+	@Column(name = "APELLIDO")
     private String apellido;
+	@Column(name = "NOMBRE")
     private String nombre;
+	@Column(name = "TIPODOCUMENTO")
     private TipoDocumento tipoDocumento;
-    private String documento;
+	@Column(name = "NUMERODOCUMENTO")
+    private Integer numerodocumento;
+	@Column(name = "ESPECIALIDAD")
     private Especialidad especialidad;
 
     public Integer getId() {
@@ -54,12 +61,12 @@ public class Mecanico {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public String getDocumento() {
-        return documento;
+    public Integer getDocumento() {
+        return numerodocumento;
     }
 
-    public void setDocumento(String documento) {
-        this.documento = documento;
+    public void setDocumento(Integer documento) {
+        this.numerodocumento = documento;
     }
 
     public Especialidad getEspecialidad() {
@@ -69,4 +76,9 @@ public class Mecanico {
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
+    
+    public String toString() {
+        return this.nombre + " " + this.apellido;
+    }
+    
 }

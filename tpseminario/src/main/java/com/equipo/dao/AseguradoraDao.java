@@ -5,45 +5,42 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.equipo.model.Mecanico;
+import com.equipo.model.Aseguradora;
 import com.equipo.util.HibernateUtil;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 @SuppressWarnings("deprecation")
-public class MecanicoDao implements Dao<Mecanico>{
-	
+public class AseguradoraDao implements Dao<Aseguradora>{
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public ObservableList<Mecanico> obtenerTodos() {
-		
+	public ObservableList<Aseguradora> obtenerTodos() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 		
 		Transaction tx = session.beginTransaction();
-		Query query = session.createQuery("from Mecanico");
-		ObservableList<Mecanico> mecanicoList = FXCollections.observableArrayList(query.list());
+		Query query = session.createQuery("from Aseguradora");
+		ObservableList<Aseguradora> aseguradoraList = FXCollections.observableArrayList(query.list());
 		tx.rollback();
 		
-		return mecanicoList;
+		return aseguradoraList;
 	}
-
+	
 	@Override
-	public void insertar(Mecanico o) {
-		// TODO Auto-generated method stub
+	public void insertar (Aseguradora a) {
+
+			
+	}
+	
+	@Override
+	public void modificar (Aseguradora a) {
 		
 	}
-
+	
 	@Override
-	public void modificar(Mecanico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eliminar(Mecanico o) {
-		// TODO Auto-generated method stub
+	public void eliminar (Aseguradora a) {
 		
 	}
 

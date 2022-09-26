@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.equipo.dao.MecanicoDao;
+import com.equipo.model.Mecanico;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -30,7 +34,7 @@ public class ConsultarDisponibilidadController {
 	@FXML
 	private ComboBox cboEspecialidad;
 	@FXML
-	private ComboBox cboMecanico;
+	private ComboBox<Mecanico> cboMecanico;
 	@FXML
 	private DatePicker picFecha;
 	@FXML
@@ -42,6 +46,17 @@ public class ConsultarDisponibilidadController {
 	@FXML
 	private Label lblHorariosDisponibles;
 
+	@FXML
+	public void initialize() {
+		
+		MecanicoDao mec = new MecanicoDao();
+		ObservableList<Mecanico> list = mec.obtenerTodos();
+		
+		cboMecanico.getItems().clear();
+		cboMecanico.setItems(list);
+		cboMecanico.getSelectionModel().select(0);
+	}
+	
 	// Event Listener on Button[#btnCancelar].onAction
 	@FXML
 	public void closeWindow() {
