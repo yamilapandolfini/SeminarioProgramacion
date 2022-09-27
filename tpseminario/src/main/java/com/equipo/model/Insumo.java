@@ -6,12 +6,19 @@ import javax.persistence.*;
 @Table(name = "INSUMO")
 public class Insumo {
 
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Column(name = "ID")
+	private Integer id;
+    @Column(name = "NOMBRE")
     private String nombre;
+    @Column(name = "MARCA")
     private String marca;
+    @Column(name = "MODELO")
     private String modelo;
+    @Column(name = "NUMEROPARTE")
     private int numeroParte;
+    
 
     public Integer getId() {
         return id;
@@ -51,5 +58,9 @@ public class Insumo {
 
     public void setNumeroParte(int numeroParte) {
         this.numeroParte = numeroParte;
+    }
+    
+    public String toString() {
+        return nombre;
     }
 }

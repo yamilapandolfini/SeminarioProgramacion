@@ -4,7 +4,6 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
  <hibernate-configuration>
    <session-factory>
-   <!-- Cambiar todas estas properties por las que necesitemos -->
      <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
      <property name="connection.url">jdbc:mysql://127.0.0.1/grupotp</property>
      <property name="connection.username">grupotp</property>
@@ -14,6 +13,8 @@
      <property name="hibernate.show_sql">true</property>
 
      <mapping class="com.equipo.model.Aseguradora"/>
-
+     <mapping class="com.equipo.model.Mecanico"/>
+	 <mapping class="com.equipo.model.Insumo"/>
+	
    </session-factory>
  </hibernate-configuration>

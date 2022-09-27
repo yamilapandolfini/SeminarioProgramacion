@@ -28,7 +28,7 @@
             <DatePicker fx:id="picMes" onAction="#clkMes" GridPane.columnIndex="1" />
             <Label fx:id="lblEmpresaAseguradora" text="Empresa Aseguradora" GridPane.rowIndex="1" />
             <ComboBox fx:id="cboEmpresaAseguradora" onAction="#slcAseguradora" prefHeight="25.0" prefWidth="166.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="btnGenerarInforme" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Generar" GridPane.rowIndex="2" />
+            <Button fx:id="btnGenerarInforme" onAction="#btnGenerarInforme" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Generar" GridPane.rowIndex="2" />
             <Button fx:id="btnImprimirInforme" mnemonicParsing="false" text="Imprimir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
