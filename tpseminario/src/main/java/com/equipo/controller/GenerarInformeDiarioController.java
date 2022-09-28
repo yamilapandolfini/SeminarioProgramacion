@@ -10,6 +10,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.equipo.dao.AseguradoraDao;
+import com.equipo.model.Aseguradora;
+import com.equipo.model.Mecanico;
+import com.equipo.model.Mecanico.Especialidad;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
@@ -23,7 +29,7 @@ public class GenerarInformeDiarioController {
 	@FXML
 	private DatePicker dpkFecha;
 	@FXML
-	private ComboBox ddEspecialidad;
+	private ComboBox<Especialidad> ddEspecialidad;
 	@FXML
 	private Button btnGenerarInforme;
 	@FXML
@@ -31,6 +37,13 @@ public class GenerarInformeDiarioController {
 	@FXML
 	private TableView tblServicio;
 
+	@FXML
+	public void initialize() {
+		
+		ddEspecialidad.getItems().setAll(Mecanico.Especialidad.values());
+		ddEspecialidad.getSelectionModel().select(0);
+	}
+	
 	// Event Listener on Button[#btnGenerarInforme].onAction
 	@FXML
 	public void clkGenerarInformeDiario(ActionEvent event) {

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import com.equipo.dao.MecanicoDao;
 import com.equipo.model.Mecanico;
+import com.equipo.model.Mecanico.Especialidad;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ public class ConsultarDisponibilidadController {
 	@FXML
 	private Label lblMecanico;
 	@FXML
-	private ComboBox cboEspecialidad;
+	private ComboBox<Especialidad> cboEspecialidad;
 	@FXML
 	private ComboBox<Mecanico> cboMecanico;
 	@FXML
@@ -51,6 +52,9 @@ public class ConsultarDisponibilidadController {
 		
 		MecanicoDao mec = new MecanicoDao();
 		ObservableList<Mecanico> list = mec.obtenerTodos();
+		
+		cboEspecialidad.getItems().setAll(Mecanico.Especialidad.values());
+		cboEspecialidad.getSelectionModel().select(0);
 		
 		cboMecanico.getItems().clear();
 		cboMecanico.setItems(list);
