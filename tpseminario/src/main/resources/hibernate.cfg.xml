@@ -15,6 +15,7 @@
      <mapping class="com.equipo.model.Aseguradora"/>
      <mapping class="com.equipo.model.Mecanico"/>
 	 <mapping class="com.equipo.model.Insumo"/>
+	 <mapping class="com.equipo.model.Servicios"/>
 	
    </session-factory>
  </hibernate-configuration>

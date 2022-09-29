@@ -18,8 +18,18 @@ public class Insumo {
     private String modelo;
     @Column(name = "NUMEROPARTE")
     private int numeroParte;
-    
 
+    public Insumo() {
+    	
+    }
+    
+    public Insumo(String nombre, String marca, String modelo, Integer numeroParte) {
+    	this.nombre = nombre;
+    	this.marca = marca;
+    	this.modelo = modelo;
+    	this.numeroParte = numeroParte;
+    }
+    
     public Integer getId() {
         return id;
     }

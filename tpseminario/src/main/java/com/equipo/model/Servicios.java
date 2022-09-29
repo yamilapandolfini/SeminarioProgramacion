@@ -5,9 +5,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "SERVICIOS")
 public class Servicios {
-
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
     private Integer id;
+	
+	@Column(name = "SERVICIO")
+    private String servicio;
+	
+	@Column(name = "DESCRIPCION")
     private String descripcion;
 
     public Integer getId() {
@@ -18,6 +25,14 @@ public class Servicios {
         this.id = id;
     }
 
+    public String getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(String servicio) {
+        this.servicio = servicio;
+    }
+    
     public String getDescripcion() {
         return descripcion;
     }
