@@ -11,7 +11,31 @@ public class Mecanico {
     }
 
     public enum Especialidad {
-        FRENOS, ELECTRICIDAD, TREN_DELANTERO_AMORT, ENCENDIDO_CARBURACION, CHAPA_PINTURA, MECANICA_GRAL    	
+        FRENOS("FRENOS"), 
+        ELECTRICIDAD("ELECTRICIDAD"), 
+        TREN_DELANTERO_AMORT("TREN DELANTERO"),
+        ENCENDIDO_CARBURACION("ENCENDIDO Y CARBURACION"),
+        CHAPA_PINTURA("CHAPA Y PINTURA"),
+        MECANICA_GRAL("MECANICA GENERAL");
+    	
+    	private String label;
+    	
+		Especialidad(String label) {
+			this.setLabel(label);
+		}
+
+		public String getLabel() {
+			return label;
+		}
+
+		public void setLabel(String label) {
+			this.label = label;
+		}
+		
+		@Override 
+		public String toString() {
+			return label; 
+		}
     }
 
 	@Id

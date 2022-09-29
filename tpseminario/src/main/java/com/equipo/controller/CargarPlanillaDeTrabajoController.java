@@ -1,13 +1,18 @@
 package com.equipo.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.equipo.dao.InsumoDao;
+import com.equipo.dao.ServiciosDao;
 import com.equipo.model.Insumo;
+import com.equipo.model.Servicios;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,13 +46,29 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	private TableColumn<Insumo, Integer> tblNumeroParte;
 	@FXML
+	private TableView<Insumo> tblInsumosDB;
+	@FXML
+	private TableColumn<Insumo, String> tblNombreDB;
+	@FXML
+	private TableColumn<Insumo, String> tblMarcaDB;
+	@FXML
+	private TableColumn<Insumo, String> tblModeloDB;
+	@FXML
+	private TableColumn<Insumo, Integer> tblNumeroParteDB;
+	@FXML
 	private Button btnConstancia;
 	@FXML
-	private TableView tblServicios;
+	private TableView<Servicios> tblServicios;
 	@FXML
-	private TableColumn tblServicio;
+	private TableColumn<Servicios, String> tblServicio;
 	@FXML
-	private TableColumn tblDescripcion;
+	private TableColumn<Servicios, String> tblDescripcion;
+	@FXML
+	private TableView<Servicios> tblServiciosDB;
+	@FXML
+	private TableColumn<Servicios, String> tblServicioDB;
+	@FXML
+	private TableColumn<Servicios, String> tblDescripcionDB;
 	@FXML
 	private Button btnAgregarInsumo;
 	@FXML
@@ -66,16 +87,93 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	public void initialize() {
 		
+		cargarInsumos();
+		cargarServicios();
+		
+	}
+	
+	private void cargarInsumos() {
 		InsumoDao insumo = new InsumoDao();
 		ObservableList<Insumo> list = insumo.obtenerTodos();
+		tblNombreDB.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
+		tblMarcaDB.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
+		tblModeloDB.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
+		tblNumeroParteDB.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
+		tblInsumosDB.setItems(list);
+	}
+	
+	private void cargarServicios() {
+		ServiciosDao servicios = new ServiciosDao();
+		ObservableList<Servicios> list = servicios.obtenerTodos();
+		tblServicioDB.setCellValueFactory(new PropertyValueFactory<Servicios, String>("servicio"));
+		tblDescripcionDB.setCellValueFactory(new PropertyValueFactory<Servicios, String>("descripcion"));
+		tblServiciosDB.setItems(list);
 		
-		tblNombre.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
-		tblMarca.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
-		tblModelo.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
-		tblNumeroParte.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
+	}
+	
+	@FXML
+	public void clkAgregarInsumo(ActionEvent event) throws IOException {
 		
-		tblInsumos.setItems(list);
+		if(tblInsumosDB.getSelectionModel().getSelectedItem() != null) {
+
+			Insumo insumo = tblInsumosDB.getSelectionModel().getSelectedItem();
+			
+			tblNombre.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
+			tblMarca.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
+			tblModelo.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
+			tblNumeroParte.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
+			
+			ObservableList<Insumo> list = tblInsumos.getItems();
+			list.add(insumo);
+			tblInsumos.setItems(list);
 		
+		}
+	}
+
+	@FXML
+	public void clkAgregarServicio(ActionEvent event) throws IOException {
+		
+		if(tblServiciosDB.getSelectionModel().getSelectedItem() != null) {
+
+			Servicios servicio = tblServiciosDB.getSelectionModel().getSelectedItem();
+			
+			tblServicio.setCellValueFactory(new PropertyValueFactory<Servicios, String>("servicio"));
+			tblDescripcion.setCellValueFactory(new PropertyValueFactory<Servicios, String>("descripcion"));
+			
+			ObservableList<Servicios> list = tblServicios.getItems();
+			list.add(servicio);
+			tblServicios.setItems(list);
+		
+		}
+	}
+	
+	@FXML
+	public void clkRemoverInsumo(ActionEvent event) throws IOException {
+		
+		if(tblInsumos.getSelectionModel().getSelectedItem() != null) {
+
+			Insumo insumo = tblInsumos.getSelectionModel().getSelectedItem();
+
+			ObservableList<Insumo> list = tblInsumos.getItems();
+			list.remove(insumo);
+			tblInsumos.setItems(list);
+
+		}
+	}
+	
+	@FXML
+	public void clkRemoverServicio(ActionEvent event) throws IOException {
+		
+		if(tblServicios.getSelectionModel().getSelectedItem() != null) {
+
+			Servicios servicio = tblServicios.getSelectionModel().getSelectedItem();
+
+			ObservableList<Servicios> list = tblServicios.getItems();
+			list.remove(servicio);
+			tblServicios.setItems(list);
+		
+		}
+
 	}
 	
 	public void closeWindow() {

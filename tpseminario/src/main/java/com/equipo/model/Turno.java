@@ -5,13 +5,15 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.equipo.model.estado.EstadoTurno;
+
 @Entity
 @Table(name = "TURNO")
 
 public class Turno {
 
     public enum Estado {
-        PENDIENTE, CANCELADO, ASISTIDO, CERRADO_CONFORME, CERRADO_INCONFORME    	
+       DISPONIBLE, CANCELADO, RESERVADO, CERRADO_CONFORME, CERRADO_INCONFORME, AUSENTE, PRESENTE    	
     }
 	
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,4 +97,9 @@ public class Turno {
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
+
+	public void pasarEstado(EstadoTurno reservado) {
+		// TODO Auto-generated method stub
+		
+	}
 }
