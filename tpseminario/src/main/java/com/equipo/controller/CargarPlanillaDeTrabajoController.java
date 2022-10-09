@@ -2,12 +2,15 @@ package com.equipo.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.equipo.dao.InsumoDao;
+import com.equipo.dao.ServicioDao;
 import com.equipo.dao.ServiciosDao;
 import com.equipo.model.Insumo;
+import com.equipo.model.Servicio;
 import com.equipo.model.Servicios;
 
 import javafx.collections.FXCollections;
@@ -32,7 +35,7 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	private Label lblPatente;
 	@FXML
-	private TextField txtPatente;
+	private TextField txtTurno;
 	@FXML
 	private Button btnBuscar;
 	@FXML
@@ -108,7 +111,6 @@ public class CargarPlanillaDeTrabajoController {
 		tblServicioDB.setCellValueFactory(new PropertyValueFactory<Servicios, String>("servicio"));
 		tblDescripcionDB.setCellValueFactory(new PropertyValueFactory<Servicios, String>("descripcion"));
 		tblServiciosDB.setItems(list);
-		
 	}
 	
 	@FXML
@@ -175,6 +177,26 @@ public class CargarPlanillaDeTrabajoController {
 		}
 
 	}
+	
+	@FXML
+	public void clkGuardar(ActionEvent event) throws IOException {
+		
+		ServicioDao servicioDAO = new ServicioDao();
+		Servicio servicio = new Servicio();
+		
+		ObservableList<Insumo> listInsumos = tblInsumos.getItems();
+		ObservableList<Servicios> listServicios = tblServicios.getItems();
+		
+		servicio.setInsumos(listInsumos);
+		servicio.setServicios(listServicios);
+		servicio.setTurno(Integer.valueOf(txtTurno.getText()));
+		
+		servicioDAO.insertar(servicio);
+		
+		closeWindow();
+		
+	}
+	
 	
 	public void closeWindow() {
 		try {

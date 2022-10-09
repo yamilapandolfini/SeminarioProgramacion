@@ -8,6 +8,7 @@ import org.hibernate.service.ServiceRegistry;
 import com.equipo.model.Aseguradora;
 import com.equipo.model.Insumo;
 import com.equipo.model.Mecanico;
+import com.equipo.model.Servicio;
 import com.equipo.model.Servicios;
 
 public class HibernateUtil {
@@ -25,6 +26,7 @@ public class HibernateUtil {
         	configuration.addAnnotatedClass(Mecanico.class);
         	configuration.addAnnotatedClass(Insumo.class);
         	configuration.addAnnotatedClass(Servicios.class);
+        	configuration.addAnnotatedClass(Servicio.class);
         	
         	ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         	System.out.println("Hibernate serviceRegistry created");
