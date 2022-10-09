@@ -62,7 +62,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="btnCargarPlanilla" mnemonicParsing="false" onAction="#clkCargarPlanilla" text="Cargar Planilla" GridPane.columnIndex="1" />
-                  <Button fx:id="btnCerraPlanilla" mnemonicParsing="false" onAction="#clkCerrarPlanilla" text="Cerrar Planilla" GridPane.columnIndex="2" />
+                  <Button fx:id="btnGenerarConstancia" mnemonicParsing="false" onAction="#clkCerrarPlanilla" text="Generar Constancia" GridPane.columnIndex="2" />
                   <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED" GridPane.columnIndex="3">
                      <font>
                         <Font name="System Bold" size="12.0" />

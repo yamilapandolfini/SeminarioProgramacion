@@ -44,7 +44,7 @@ public class ServicioDto {
 		
 	}
 
-	private void setTurno(Turno turno) {
+	private void setTurno(Integer integer) {
 		// TODO Auto-generated method stub
 		
 	}

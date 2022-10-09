@@ -4,18 +4,27 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Servicio")
 @Table(name = "SERVICIO")
 public class Servicio {
 
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Turno turno;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio")
+	
+	@Column(name = "TURNO_ID")
+    private Integer turno_id;
+	
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Servicios> servicios;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio")
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Insumo> insumos;
+    
+	@Column(name = "CONFORME")
     private boolean conforme;
+	
+	@Column(name = "COMENTARIOS")
     private String comentarios;
 
     public Integer getId() {
@@ -26,12 +35,12 @@ public class Servicio {
         this.id = id;
     }
 
-    public Turno getTurno() {
-        return turno;
+    public Integer getTurno() {
+        return turno_id;
     }
 
-    public void setTurno(Turno turno) {
-        this.turno = turno;
+    public void setTurno(Integer turno) {
+        this.turno_id = turno;
     }
 
     public List<Servicios> getServicios() {
@@ -65,4 +74,5 @@ public class Servicio {
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
+   
 }

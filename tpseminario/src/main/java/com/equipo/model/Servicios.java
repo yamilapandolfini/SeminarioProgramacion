@@ -2,7 +2,7 @@ package com.equipo.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Servicios")
 @Table(name = "SERVICIOS")
 public class Servicios {
 	
@@ -39,5 +39,9 @@ public class Servicios {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public String toString( ) {
+    	return this.servicio;
     }
 }

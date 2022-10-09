@@ -37,7 +37,7 @@ public class MostrarServicioController {
 	@FXML
 	private Button btnCargarPlanilla;
 	@FXML
-	private Button btnCerraPlanilla;
+	private Button btnGenerarConstancia;
 	@FXML
 	private Button btnCancelar;
 	@FXML
