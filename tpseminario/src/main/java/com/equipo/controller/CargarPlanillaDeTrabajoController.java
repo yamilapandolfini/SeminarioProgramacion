@@ -8,10 +8,10 @@ import java.util.logging.Logger;
 
 import com.equipo.dao.InsumoDao;
 import com.equipo.dao.ServicioDao;
-import com.equipo.dao.ServiciosDao;
+import com.equipo.dao.TrabajoDao;
 import com.equipo.model.Insumo;
 import com.equipo.model.Servicio;
-import com.equipo.model.Servicios;
+import com.equipo.model.Trabajo;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,17 +61,17 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	private Button btnConstancia;
 	@FXML
-	private TableView<Servicios> tblServicios;
+	private TableView<Trabajo> tblServicios;
 	@FXML
-	private TableColumn<Servicios, String> tblServicio;
+	private TableColumn<Trabajo, String> tblServicio;
 	@FXML
-	private TableColumn<Servicios, String> tblDescripcion;
+	private TableColumn<Trabajo, String> tblDescripcion;
 	@FXML
-	private TableView<Servicios> tblServiciosDB;
+	private TableView<Trabajo> tblServiciosDB;
 	@FXML
-	private TableColumn<Servicios, String> tblServicioDB;
+	private TableColumn<Trabajo, String> tblServicioDB;
 	@FXML
-	private TableColumn<Servicios, String> tblDescripcionDB;
+	private TableColumn<Trabajo, String> tblDescripcionDB;
 	@FXML
 	private Button btnAgregarInsumo;
 	@FXML
@@ -106,10 +106,10 @@ public class CargarPlanillaDeTrabajoController {
 	}
 	
 	private void cargarServicios() {
-		ServiciosDao servicios = new ServiciosDao();
-		ObservableList<Servicios> list = servicios.obtenerTodos();
-		tblServicioDB.setCellValueFactory(new PropertyValueFactory<Servicios, String>("servicio"));
-		tblDescripcionDB.setCellValueFactory(new PropertyValueFactory<Servicios, String>("descripcion"));
+		TrabajoDao servicios = new TrabajoDao();
+		ObservableList<Trabajo> list = servicios.obtenerTodos();
+		tblServicioDB.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("trabajo"));
+		tblDescripcionDB.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("descripcion"));
 		tblServiciosDB.setItems(list);
 	}
 	
@@ -137,12 +137,12 @@ public class CargarPlanillaDeTrabajoController {
 		
 		if(tblServiciosDB.getSelectionModel().getSelectedItem() != null) {
 
-			Servicios servicio = tblServiciosDB.getSelectionModel().getSelectedItem();
+			Trabajo servicio = tblServiciosDB.getSelectionModel().getSelectedItem();
 			
-			tblServicio.setCellValueFactory(new PropertyValueFactory<Servicios, String>("servicio"));
-			tblDescripcion.setCellValueFactory(new PropertyValueFactory<Servicios, String>("descripcion"));
+			tblServicio.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("trabajo"));
+			tblDescripcion.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("descripcion"));
 			
-			ObservableList<Servicios> list = tblServicios.getItems();
+			ObservableList<Trabajo> list = tblServicios.getItems();
 			list.add(servicio);
 			tblServicios.setItems(list);
 		
@@ -168,9 +168,9 @@ public class CargarPlanillaDeTrabajoController {
 		
 		if(tblServicios.getSelectionModel().getSelectedItem() != null) {
 
-			Servicios servicio = tblServicios.getSelectionModel().getSelectedItem();
+			Trabajo servicio = tblServicios.getSelectionModel().getSelectedItem();
 
-			ObservableList<Servicios> list = tblServicios.getItems();
+			ObservableList<Trabajo> list = tblServicios.getItems();
 			list.remove(servicio);
 			tblServicios.setItems(list);
 		
@@ -185,10 +185,10 @@ public class CargarPlanillaDeTrabajoController {
 		Servicio servicio = new Servicio();
 		
 		ObservableList<Insumo> listInsumos = tblInsumos.getItems();
-		ObservableList<Servicios> listServicios = tblServicios.getItems();
+		ObservableList<Trabajo> listServicios = tblServicios.getItems();
 		
 		servicio.setInsumos(listInsumos);
-		servicio.setServicios(listServicios);
+		servicio.setTrabajos(listServicios);
 		servicio.setTurno(Integer.valueOf(txtTurno.getText()));
 		
 		servicioDAO.insertar(servicio);

@@ -2,7 +2,7 @@ package com.equipo.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Insumo")
 @Table(name = "INSUMO")
 public class Insumo {
 
@@ -10,12 +10,16 @@ public class Insumo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
+	
     @Column(name = "NOMBRE")
     private String nombre;
+    
     @Column(name = "MARCA")
     private String marca;
+    
     @Column(name = "MODELO")
     private String modelo;
+    
     @Column(name = "NUMEROPARTE")
     private int numeroParte;
 

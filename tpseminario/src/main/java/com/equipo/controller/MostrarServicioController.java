@@ -7,16 +7,25 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.equipo.dao.MecanicoDao;
+import com.equipo.dao.ServicioDao;
+import com.equipo.dao.TrabajoDao;
+import com.equipo.model.Mecanico;
+import com.equipo.model.Servicio;
+import com.equipo.model.Trabajo;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
-
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.TableView;
@@ -33,7 +42,9 @@ public class MostrarServicioController {
 	@FXML
 	private DatePicker picFecha;
 	@FXML
-	private TableView tblServicios;
+	private TableView<Servicio> tblServicios;
+	@FXML
+	private TableColumn<Servicio, Integer> tblNroServicio;
 	@FXML
 	private Button btnCargarPlanilla;
 	@FXML
@@ -43,7 +54,16 @@ public class MostrarServicioController {
 	@FXML
 	private Button btnImprimi;
 
-	// Event Listener on Button[#btnCargarPlanilla].onAction
+	@FXML
+	public void initialize() {
+		
+		ServicioDao servicios = new ServicioDao();
+		ObservableList<Servicio> list = servicios.obtenerTodos();
+		tblNroServicio.setCellValueFactory(new PropertyValueFactory<Servicio, Integer>("id"));
+		tblServicios.setItems(list);
+	}
+	
+	
 	@FXML
 	public void clkCargarPlanilla(ActionEvent event) {
 		try {
