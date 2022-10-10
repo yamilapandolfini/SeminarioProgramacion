@@ -9,7 +9,7 @@ import com.equipo.model.Aseguradora;
 import com.equipo.model.Insumo;
 import com.equipo.model.Mecanico;
 import com.equipo.model.Servicio;
-import com.equipo.model.Servicios;
+import com.equipo.model.Trabajo;
 
 public class HibernateUtil {
 
@@ -25,7 +25,7 @@ public class HibernateUtil {
         	configuration.addAnnotatedClass(Aseguradora.class);
         	configuration.addAnnotatedClass(Mecanico.class);
         	configuration.addAnnotatedClass(Insumo.class);
-        	configuration.addAnnotatedClass(Servicios.class);
+        	configuration.addAnnotatedClass(Trabajo.class);
         	configuration.addAnnotatedClass(Servicio.class);
         	
         	ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

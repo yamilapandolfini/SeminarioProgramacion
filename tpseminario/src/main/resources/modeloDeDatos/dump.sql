@@ -159,7 +159,7 @@ CREATE TABLE `servicio` (
   `COMENTARIOS` varchar(250) DEFAULT NULL,
   `TURNO_ID` int DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `servicio` (
 
 LOCK TABLES `servicio` WRITE;
 /*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
-INSERT INTO `servicio` VALUES (5,0,NULL,1);
+INSERT INTO `servicio` VALUES (23,0,NULL,1),(24,0,NULL,2),(25,0,NULL,3);
 /*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,11 +184,11 @@ CREATE TABLE `servicio_insumo` (
   `SERVICIO_ID` int DEFAULT NULL,
   `INSUMOS_ID` int DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_SERVICIO_INSUMOS_SERVICIO` (`SERVICIO_ID`),
-  KEY `FK_SERVICIO_INSUMOS_INSUMOS` (`INSUMOS_ID`),
-  CONSTRAINT `FK_SERVICIO_INSUMOS_INSUMOS` FOREIGN KEY (`INSUMOS_ID`) REFERENCES `insumo` (`ID`),
-  CONSTRAINT `FK_SERVICIO_INSUMOS_SERVICIO` FOREIGN KEY (`SERVICIO_ID`) REFERENCES `servicios` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_SERVICIO_INSUMO_SERVICIO_idx` (`SERVICIO_ID`),
+  KEY `FK_SERVICIO_INSUMO_INSUMO` (`INSUMOS_ID`),
+  CONSTRAINT `FK_SERVICIO_INSUMO_INSUMO` FOREIGN KEY (`INSUMOS_ID`) REFERENCES `insumo` (`ID`),
+  CONSTRAINT `FK_SERVICIO_INSUMO_SERVICIO` FOREIGN KEY (`SERVICIO_ID`) REFERENCES `servicio` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,62 +197,62 @@ CREATE TABLE `servicio_insumo` (
 
 LOCK TABLES `servicio_insumo` WRITE;
 /*!40000 ALTER TABLE `servicio_insumo` DISABLE KEYS */;
-INSERT INTO `servicio_insumo` VALUES (2,5,3),(3,5,4);
+INSERT INTO `servicio_insumo` VALUES (16,23,3),(17,23,4),(18,23,5),(19,24,3),(20,24,4),(21,25,3),(22,25,4),(23,25,5);
 /*!40000 ALTER TABLE `servicio_insumo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `servicio_servicios`
+-- Table structure for table `servicio_trabajo`
 --
 
-DROP TABLE IF EXISTS `servicio_servicios`;
+DROP TABLE IF EXISTS `servicio_trabajo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servicio_servicios` (
+CREATE TABLE `servicio_trabajo` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `SERVICIO_ID` int DEFAULT NULL,
-  `SERVICIOS_ID` int DEFAULT NULL,
+  `TRABAJOS_ID` int DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_SERVICIO_SERVICIOS_SERVICIO` (`SERVICIO_ID`),
-  KEY `FK_SERVICIO_SERVICIOS_SERVICIOS` (`SERVICIOS_ID`),
-  CONSTRAINT `FK_SERVICIO_SERVICIOS_SERVICIO` FOREIGN KEY (`SERVICIO_ID`) REFERENCES `servicios` (`ID`),
-  CONSTRAINT `FK_SERVICIO_SERVICIOS_SERVICIOS` FOREIGN KEY (`SERVICIOS_ID`) REFERENCES `servicios` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_SERVICIO_TRABAJO_SERVICIO_idx` (`SERVICIO_ID`),
+  KEY `FK_SERVICIO_TRABAJO_TRABAJO` (`TRABAJOS_ID`),
+  CONSTRAINT `FK_SERVICIO_TRABAJO_SERVICIO` FOREIGN KEY (`SERVICIO_ID`) REFERENCES `servicio` (`ID`),
+  CONSTRAINT `FK_SERVICIO_TRABAJO_TRABAJO` FOREIGN KEY (`TRABAJOS_ID`) REFERENCES `trabajo` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `servicio_servicios`
+-- Dumping data for table `servicio_trabajo`
 --
 
-LOCK TABLES `servicio_servicios` WRITE;
-/*!40000 ALTER TABLE `servicio_servicios` DISABLE KEYS */;
-INSERT INTO `servicio_servicios` VALUES (2,5,3),(3,5,4);
-/*!40000 ALTER TABLE `servicio_servicios` ENABLE KEYS */;
+LOCK TABLES `servicio_trabajo` WRITE;
+/*!40000 ALTER TABLE `servicio_trabajo` DISABLE KEYS */;
+INSERT INTO `servicio_trabajo` VALUES (5,23,3),(6,23,4),(7,23,5),(8,24,3),(9,24,4),(10,25,3),(11,25,4),(12,25,5);
+/*!40000 ALTER TABLE `servicio_trabajo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `servicios`
+-- Table structure for table `trabajo`
 --
 
-DROP TABLE IF EXISTS `servicios`;
+DROP TABLE IF EXISTS `trabajo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servicios` (
+CREATE TABLE `trabajo` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `SERVICIO` varchar(45) DEFAULT NULL,
+  `TRABAJO` varchar(45) DEFAULT NULL,
   `DESCRIPCION` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `servicios`
+-- Dumping data for table `trabajo`
 --
 
-LOCK TABLES `servicios` WRITE;
-/*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (3,'ALINEACION','Alineación 4 ruedas'),(4,'BALANCEO','Balanceo 4 ruedas'),(5,'FILTROS','Cambio de filtros');
-/*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
+LOCK TABLES `trabajo` WRITE;
+/*!40000 ALTER TABLE `trabajo` DISABLE KEYS */;
+INSERT INTO `trabajo` VALUES (3,'ALINEACION','Alineación 4 ruedas'),(4,'BALANCEO','Balanceo 4 ruedas'),(5,'FILTROS','Cambio de filtros');
+/*!40000 ALTER TABLE `trabajo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -385,4 +385,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-09 13:51:17
+-- Dump completed on 2022-10-09 23:43:13

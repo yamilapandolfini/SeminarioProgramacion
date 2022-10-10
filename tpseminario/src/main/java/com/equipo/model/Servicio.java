@@ -10,13 +10,14 @@ public class Servicio {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
 	
 	@Column(name = "TURNO_ID")
     private Integer turno_id;
 	
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Servicios> servicios;
+    private List<Trabajo> trabajos;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Insumo> insumos;
@@ -43,12 +44,12 @@ public class Servicio {
         this.turno_id = turno;
     }
 
-    public List<Servicios> getServicios() {
-        return servicios;
+    public List<Trabajo> getTrabajos() {
+        return trabajos;
     }
 
-    public void setServicios(List<Servicios> servicios) {
-        this.servicios = servicios;
+    public void setTrabajos(List<Trabajo> trabajos) {
+        this.trabajos = trabajos;
     }
 
     public List<Insumo> getInsumos() {

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.equipo.model.Insumo;
 import com.equipo.model.Servicio;
-import com.equipo.model.Servicios;
+import com.equipo.model.Trabajo;
 import com.equipo.model.Turno;
 
 public class ServicioDto {
@@ -15,7 +15,7 @@ public class ServicioDto {
 		
 		dto.setId(servicio.getId());
 		dto.setTurno(servicio.getTurno());
-		dto.setServicios(servicio.getServicios());
+		dto.setServicios(servicio.getTrabajos());
 		dto.setInsumos(servicio.getInsumos());
 		dto.setConforme(servicio.getConforme());
 		dto.setComentarios(servicio.getComentarios());
@@ -39,7 +39,7 @@ public class ServicioDto {
 		
 	}
 
-	private void setServicios(List<Servicios> servicios) {
+	private void setServicios(List<Trabajo> servicios) {
 		// TODO Auto-generated method stub
 		
 	}

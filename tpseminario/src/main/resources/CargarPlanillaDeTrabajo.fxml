@@ -58,6 +58,6 @@
          </font>
       </Label>
       <Label fx:id="lblPatente" layoutX="14.0" layoutY="18.0" text="Nro Turno" />
-      <TextField fx:id="txtTurno" editable="false" layoutX="84.0" layoutY="16.0" prefHeight="25.0" prefWidth="120.0" text="1" />
+      <TextField fx:id="txtTurno" editable="true" layoutX="84.0" layoutY="16.0" prefHeight="25.0" prefWidth="120.0" />
    </children>
 </AnchorPane>

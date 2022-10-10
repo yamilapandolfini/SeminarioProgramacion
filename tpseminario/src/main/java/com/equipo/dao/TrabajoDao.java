@@ -5,41 +5,41 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.equipo.model.Servicios;
+import com.equipo.model.Trabajo;
 import com.equipo.util.HibernateUtil;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ServiciosDao implements Dao<Servicios> {
+public class TrabajoDao implements Dao<Trabajo> {
 
 	@Override
-	public void insertar(Servicios o) {
+	public void insertar(Trabajo t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void modificar(Servicios o) {
+	public void modificar(Trabajo t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void eliminar(Servicios o) {
+	public void eliminar(Trabajo t) {
 		// TODO Auto-generated method stub
 		
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public ObservableList<Servicios> obtenerTodos() {
+	public ObservableList<Trabajo> obtenerTodos() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 		
 		Transaction tx = session.beginTransaction();
-		Query query = session.createQuery("from Servicios");
-		ObservableList<Servicios> servList = FXCollections.observableArrayList(query.list());
+		Query query = session.createQuery("from Trabajo");
+		ObservableList<Trabajo> servList = FXCollections.observableArrayList(query.list());
 		tx.rollback();
 		
 		return servList;
