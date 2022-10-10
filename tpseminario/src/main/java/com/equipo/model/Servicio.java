@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 @Entity(name = "Servicio")
 @Table(name = "SERVICIO")
 public class Servicio {
@@ -75,5 +78,5 @@ public class Servicio {
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
-   
+    
 }

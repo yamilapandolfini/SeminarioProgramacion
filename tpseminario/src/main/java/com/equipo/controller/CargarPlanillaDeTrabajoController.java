@@ -181,20 +181,29 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	public void clkGuardar(ActionEvent event) throws IOException {
 		
-		ServicioDao servicioDAO = new ServicioDao();
-		Servicio servicio = new Servicio();
+		Integer cantTrabajos = tblServicios.getItems().size();
+		Integer cantInsumos = tblInsumos.getItems().size();
 		
-		ObservableList<Insumo> listInsumos = tblInsumos.getItems();
-		ObservableList<Trabajo> listServicios = tblServicios.getItems();
-		
-		servicio.setInsumos(listInsumos);
-		servicio.setTrabajos(listServicios);
-		servicio.setTurno(Integer.valueOf(txtTurno.getText()));
-		
-		servicioDAO.insertar(servicio);
-		
-		closeWindow();
-		
+		if ((cantTrabajos != 0) || (cantInsumos != 0)) {
+			
+			ServicioDao servicioDAO = new ServicioDao();
+			Servicio servicio = new Servicio();
+			
+			servicio.setTurno(Integer.valueOf(txtTurno.getText()));
+			
+			if (cantTrabajos != 0) {
+				ObservableList<Trabajo> listServicios = tblServicios.getItems();
+				servicio.setTrabajos(listServicios);
+			}
+			else {
+				ObservableList<Insumo> listInsumos = tblInsumos.getItems();
+				servicio.setInsumos(listInsumos);
+			}
+			
+		servicioDAO.insertar(servicio);	
+			
+		closeWindow();	
+		}	
 	}
 	
 	

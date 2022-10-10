@@ -52,4 +52,16 @@ public class ServicioDao implements Dao<Servicio> {
 		return servicioList;
 	}
 
+	public Servicio obtenerUno(Integer id){
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();	
+		Transaction tx = session.beginTransaction();
+		Servicio servicio = new Servicio();
+		
+		servicio = (Servicio) session.get(Servicio.class, id);
+		tx.rollback();
+		
+		return servicio;
+	}
+
 }
