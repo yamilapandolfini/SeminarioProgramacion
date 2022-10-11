@@ -2,6 +2,7 @@ package com.equipo.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import com.equipo.dao.MecanicoDao;
 import com.equipo.dao.ServicioDao;
 import com.equipo.dao.TrabajoDao;
+import com.equipo.model.Insumo;
 import com.equipo.model.Mecanico;
 import com.equipo.model.Servicio;
 import com.equipo.model.Trabajo;
@@ -56,7 +58,7 @@ public class MostrarServicioController {
 	@FXML
 	private Button btnCancelar;
 	@FXML
-	private Button btnImprimi;
+	private Button btnImprimir;
 	@FXML
 	private ObservableList<Servicio> servicioData = FXCollections.observableArrayList();
 	
@@ -136,28 +138,21 @@ public class MostrarServicioController {
 	
 	// Event Listener on Button[#btnImprimi].onAction
 	@FXML
-	public void clkImprimirFicha(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ImprimirFicha.fxml"));
+	public void clkImprimirFicha(ActionEvent event) throws IOException {
+		
+		if(tblServicios.getSelectionModel().getSelectedItem() != null) {
+			Servicio servicio = tblServicios.getSelectionModel().getSelectedItem();
 			
-			Parent root = loader.load();
-			
-			ImprimirFichaController controlador = loader.getController();
-			
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			
-			stage.setScene(scene);
-			stage.setTitle("Imprimir ficha");
-			stage.show();
-			
-			stage.setOnCloseRequest(e -> controlador.closeWindow());
-			
-			Stage myStage = (Stage) this.lblFecha.getScene().getWindow();
-			
-			myStage.close();
-		} catch (IOException ex) {
-			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/ImprimirFicha.fxml"));
+			Parent tableViewParent = loader.load();
+			Scene tableViewScene = new Scene(tableViewParent);
+			ImprimirFichaController controller = loader.getController();
+			controller.setServicio(servicio);
+	        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	        
+	        window.setScene(tableViewScene);
+	        window.show();
 		}
 	}
 	
