@@ -18,7 +18,7 @@
             <TableColumn prefWidth="140.0" resizable="false" text="Patente Vehículo" />
             <TableColumn prefWidth="140.0" resizable="false" text="Nombre Mecánico" />
             <TableColumn resizable="false" text="Horario" />
-            <TableColumn prefWidth="82.0" resizable="false" text="Estado" />
+            <TableColumn fx:id="tblConforme" prefWidth="82.0" resizable="false" text="Conforme" />
         </columns>
       </TableView>
       <Button fx:id="btnCancelar" layoutX="496.0" layoutY="395.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED">
@@ -26,7 +26,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnGenerarConstancia" layoutX="360.0" layoutY="395.0" mnemonicParsing="false" onAction="#clkCerrarPlanilla" text="Generar Constancia" />
+      <Button fx:id="btnGenerarConstancia" layoutX="360.0" layoutY="395.0" mnemonicParsing="false" onAction="#clkGenerarConstancia" text="Generar Constancia" />
       <Button fx:id="btnCargarPlanilla" layoutX="246.0" layoutY="395.0" mnemonicParsing="false" onAction="#clkCargarPlanilla" text="Cargar Planilla" />
       <DatePicker fx:id="picFecha" layoutX="63.0" layoutY="14.0" />
       <Button fx:id="btnImprimir" layoutX="133.0" layoutY="395.0" mnemonicParsing="false" onAction="#clkImprimirFicha" text="Imprimir Ficha" />
