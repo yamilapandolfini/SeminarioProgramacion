@@ -20,20 +20,26 @@ public class ServicioDao implements Dao<Servicio> {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		
 		session.save(s);
-		
 		tx.commit();	
 	}
 
 	@Override
-	public void modificar(Servicio o) {
-		// TODO Auto-generated method stub
+	public void modificar(Servicio s) {
+
 		
 	}
 
+	public void modificarConformidad(Servicio s) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();	
+		Transaction tx = session.beginTransaction();
+		session.update(s);
+		tx.commit();
+	}
+	
 	@Override
-	public void eliminar(Servicio o) {
+	public void eliminar(Servicio s) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -44,7 +50,6 @@ public class ServicioDao implements Dao<Servicio> {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();	
 		Transaction tx = session.beginTransaction();
-		
 		Query query = session.createQuery("from Servicio");
 		ObservableList<Servicio> servicioList = FXCollections.observableArrayList(query.list());
 		tx.rollback();
@@ -57,7 +62,6 @@ public class ServicioDao implements Dao<Servicio> {
 		Session session = sessionFactory.getCurrentSession();	
 		Transaction tx = session.beginTransaction();
 		Servicio servicio = new Servicio();
-		
 		servicio = (Servicio) session.get(Servicio.class, id);
 		tx.rollback();
 		
