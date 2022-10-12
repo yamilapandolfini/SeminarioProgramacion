@@ -2,7 +2,6 @@ package com.equipo.dto;
 
 import com.equipo.model.Cliente;
 import com.equipo.model.Mecanico;
-import com.equipo.model.Servicio;
 import com.equipo.model.Turno;
 import com.equipo.model.Turno.Estado;
 import com.equipo.model.Vehiculo;
@@ -18,14 +17,8 @@ public class TurnoDto {
 		dto.setVehiculo(turno.getVehiculo());
 		dto.setMecanico(turno.getMecanico());
 		dto.setFecha(turno.getFecha() + " " + turno.getHorario());
-		dto.setEstado(turno.getEstado());
-		dto.setServicio(turno.getServicio());
+		dto.setEstado(turno.getEstado());		
 		return dto;
-		
-	}
-
-	private void setServicio(Servicio servicio) {
-		// TODO Auto-generated method stub
 		
 	}
 

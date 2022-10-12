@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 import com.equipo.model.estado.EstadoTurno;
 
-@Entity
+@Entity(name = "Turno")
 @Table(name = "TURNO")
 
 public class Turno {
@@ -16,23 +16,26 @@ public class Turno {
        DISPONIBLE, CANCELADO, RESERVADO, CERRADO_CONFORME, CERRADO_INCONFORME, AUSENTE, PRESENTE    	
     }
 	
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
-    @ManyToOne()
-    @JoinColumn(name = "CLIENTE_ID")
+    @ManyToOne
+    @JoinColumn(name = "CLIENTE_ID", updatable=false, insertable=false)
     private Cliente cliente;
-    @ManyToOne()
-    @JoinColumn(name = "VEHICULO_ID")
+    @ManyToOne
+    @JoinColumn(name = "VEHICULO_ID", updatable=false, insertable=false)
     private Vehiculo vehiculo;
-    @ManyToOne()
-    @JoinColumn(name = "MECANICO_ID")
+    @ManyToOne
+    @JoinColumn(name = "MECANICO_ID", updatable=false, insertable=false)
     private Mecanico mecanico;
+    @Column(name = "FECHA")
     private Date fecha;
+    @Column(name = "HORARIO")
     private Time horario;
+    @Column(name = "ESTADO")
+    private int estado_ID;
     private Estado estado;
-    @ManyToOne()
-    @JoinColumn(name = "SERVICIO_ID")
-    private Servicio servicio;
 
     public Integer getId() {
         return id;
@@ -88,14 +91,6 @@ public class Turno {
 
     public void setHorario(Time horario) {
         this.horario = horario;
-    }
-
-    public Servicio getServicio() {
-        return servicio;
-    }
-
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
     }
 
 	public void pasarEstado(EstadoTurno reservado) {

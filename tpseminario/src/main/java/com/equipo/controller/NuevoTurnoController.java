@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.equipo.dao.TurnoDao;
+import com.equipo.model.Turno;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -81,6 +85,17 @@ public class NuevoTurnoController {
 	@FXML
 	private Button btnConsultarDisponibilidad;
 
+	@FXML
+	public void initialize() {
+		
+		TurnoDao turno = new TurnoDao();
+		ObservableList<Turno> list = turno.obtenerTodos();
+		Turno ultimoTurno = list.get(list.size() - 1);
+		int ultimoTurnoID = ultimoTurno.getId();
+		txtNroTurno.setText(Integer.toString(ultimoTurnoID));
+		txtNroTurno.setEditable(false);
+	}
+	
 	// Event Listener on Button[#btnGenerarFicha].onAction
 	@FXML
 	public void clkGenerarFicha(ActionEvent event) throws IOException {
