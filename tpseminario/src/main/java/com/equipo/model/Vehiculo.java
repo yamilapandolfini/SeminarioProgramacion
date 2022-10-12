@@ -2,21 +2,29 @@ package com.equipo.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "CLIENTE")
+@Entity(name = "Vehiculo")
+@Table(name = "VEHICULO")
 
 public class Vehiculo {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
+    @Column(name = "MARCA")
     private String marca;
+    @Column(name = "MODELO")
     private String modelo;
+    @Column(name = "ANOFABRICACION")
     private String anoFabricacion;
+    @Column(name = "PATENTE")
     private String patente;
+    @Column(name = "COMPANIASEGURO")
     private String companiaSeguro;
+    @Column(name = "NUMEROPOLIZA")
     private String numeroPoliza;
     @ManyToOne()
-    @JoinColumn(name = "CLIENTE_ID")
+    @JoinColumn(name = "CLIENTE_ID", updatable=false, insertable=false)
     private Cliente cliente;
 
     public Integer getId() {

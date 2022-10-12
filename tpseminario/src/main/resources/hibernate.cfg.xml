@@ -15,8 +15,10 @@
      <mapping class="com.equipo.model.Aseguradora"/>
      <mapping class="com.equipo.model.Mecanico"/>
 	 <mapping class="com.equipo.model.Insumo"/>
-	 <mapping class="com.equipo.model.Servicios"/>
-	 <mapping class="com.equipo.model.Servicio"/>
-	 	
+	 <mapping class="com.equipo.model.Trabajo"/>
+	 <mapping class="com.equipo.model.Servicio"/><mapping class="com.equipo.model.Turno" />
+   	<mapping class="com.equipo.model.Cliente" />
+   	<mapping class="com.equipo.model.Vehiculo" />
+
    </session-factory>
  </hibernate-configuration>
