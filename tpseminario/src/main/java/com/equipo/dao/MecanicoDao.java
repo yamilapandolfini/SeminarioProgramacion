@@ -28,6 +28,21 @@ public class MecanicoDao implements Dao<Mecanico>{
 		
 		return mecanicoList;
 	}
+	
+	public ObservableList<Mecanico> obtenerTodosPorEspecialidad(Integer especialidad) {
+		
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery("FROM Mecanico WHERE Especialidad = :especialidad");
+		query.setParameter("especialidad", especialidad);
+		
+		ObservableList<Mecanico> mecanicoList = FXCollections.observableArrayList(query.list());
+		tx.rollback();
+		
+		return mecanicoList;
+	}
 
 	@Override
 	public void insertar(Mecanico o) {
