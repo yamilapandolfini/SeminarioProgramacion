@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.1416490486257928" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="475.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.equipo.controller.MostrarTurnosController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="95.0" prefWidth="736.0">
+         <children>
+            <GridPane prefHeight="73.0" prefWidth="658.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="5.0" prefWidth="5.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="80.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="0.0" prefWidth="162.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="10.0" prefWidth="22.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="10.0" prefWidth="438.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="lblFecha" alignment="CENTER_RIGHT" text="Fecha" GridPane.columnIndex="1" />
+                  <Button fx:id="btnBuscar" mnemonicParsing="false" text="Buscar" GridPane.columnIndex="4" />
+                  <Label fx:id="lblNroTurno" alignment="CENTER_RIGHT" text="Nro Turno" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtNroTurno" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="picFecha" GridPane.columnIndex="2" />
+               </children>
+            </GridPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="403.0" prefWidth="743.0">
+         <children>
+            <TableView fx:id="tblTurnos" prefHeight="357.0" prefWidth="658.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Nro Turno" />
+                <TableColumn prefWidth="140.0" text="Nombre Cliente" />
+                  <TableColumn prefWidth="140.0" text="Patente Vehículo" />
+                  <TableColumn prefWidth="140.0" text="Nombre Mecánico" />
+                  <TableColumn text="Horario" />
+                  <TableColumn prefWidth="82.0" text="Estado" />
+              </columns>
+            </TableView>
+            <GridPane layoutY="357.0" prefHeight="48.0" prefWidth="656.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnNuevoTurno" mnemonicParsing="false" onAction="#clkNuevoTurno" text="Nuevo Turno" />
+                  <Button fx:id="btnEditarTurno" mnemonicParsing="false" onAction="#clkEditarTurno" text="Editar Turno" GridPane.columnIndex="1" />
+                  <Button fx:id="btnEliminarTurno" mnemonicParsing="false" onAction="#clkEliminarTurno" text="Eliminar Turno" GridPane.columnIndex="2" />
+                  <Button fx:id="btnRegistrarAsistencia" mnemonicParsing="false" onAction="#clkRegistrarAsistencia" text="Registrar Asistencia" GridPane.columnIndex="3" />
+                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+               </children>
+            </GridPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

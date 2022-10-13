@@ -1,1 +1,11 @@
-/com/
+/.metadata/
+
+tpseminario/.settings/**
+
+.classpath
+
+*/target/**
+*.class
+
+
+/target/

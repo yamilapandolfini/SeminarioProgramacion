@@ -7,13 +7,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.equipo.dao.MecanicoDao;
+import com.equipo.dao.TurnoDao;
 import com.equipo.model.Mecanico;
 import com.equipo.model.Mecanico.Especialidad;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
@@ -45,20 +52,17 @@ public class ConsultarDisponibilidadController {
 	@FXML
 	private Button btnCancelar;
 	@FXML
+	private Button btnVerificar;
+	@FXML
 	private Label lblHorariosDisponibles;
+	@FXML
+	private Label lblError;
 
 	@FXML
 	public void initialize() {
 		
-		MecanicoDao mec = new MecanicoDao();
-		ObservableList<Mecanico> list = mec.obtenerTodos();
-		
 		cboEspecialidad.getItems().setAll(Mecanico.Especialidad.values());
-		cboEspecialidad.getSelectionModel().select(0);
-		
-		cboMecanico.getItems().clear();
-		cboMecanico.setItems(list);
-		cboMecanico.getSelectionModel().select(0);
+
 	}
 	
 	// Event Listener on Button[#btnCancelar].onAction
@@ -83,5 +87,63 @@ public class ConsultarDisponibilidadController {
 		} catch (IOException ex) {
 			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
 		}
-	}
+	}	
+	
+	// Event Listener on Button[#btnVerificar].onAction
+	@FXML
+	public void verifyAvailability() {
+		try {			
+			LocalDate today = LocalDate.now();
+			LocalDate fechaTurno = picFecha.getValue();
+			if(fechaTurno==null||fechaTurno.isBefore(today)) {				
+				lblError.setText("Fecha no válida");
+				return;			
+			}
+			
+			if(cboEspecialidad.getSelectionModel().getSelectedIndex() == -1) {
+				lblError.setText("Debe seleccionar una especialidad");
+				return;			
+			}
+			
+			getHorarios(fechaTurno);
+			
+		} catch (Exception ex) {
+			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);	
+		}
+	}	
+	
+    public void especialidadSelected(ActionEvent e)
+    {        
+        getMecanicos(cboEspecialidad.getSelectionModel().getSelectedIndex());
+    }
+    
+    public void getMecanicos(Integer especialidad) {
+		
+    	MecanicoDao mec = new MecanicoDao();
+		ObservableList<Mecanico> list = mec.obtenerTodosPorEspecialidad(especialidad);		
+		
+		cboMecanico.getItems().clear();
+		cboMecanico.setItems(list);
+		cboMecanico.getSelectionModel().select(0);
+    }
+    
+    public void getHorarios(LocalDate fecha) {		
+
+    	TurnoDao turno = new TurnoDao();
+		ObservableList<Time> horariosOcupados = turno.obtenerHorariosPorFecha(fecha);		
+		List<Time> listHorarios = new ArrayList<Time>();
+		ObservableList<Time> horariosDisponibles = FXCollections.observableList(listHorarios);		
+		
+		for (int i = 8; i < 17; i++) {
+			Time horario = Time.valueOf(LocalTime.of(i, 0));
+			lblError.setText(horario.toString());						
+			if (!horariosOcupados.contains(horario)) {
+				horariosDisponibles.add(horario);	
+			}			
+		}
+		
+		lstHorariosDisponibles.getItems().clear();
+		lstHorariosDisponibles.setItems(horariosDisponibles);		
+    }
+	
 }
