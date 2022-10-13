@@ -98,5 +98,26 @@ public class ServicioDao implements Dao<Servicio> {
 		
 		return rows;
 	}
+	
+	   @SuppressWarnings({ "unchecked", "deprecation" })
+	    public List<Object[]> obtenerPorMesAseguradora(Integer mes, Integer aseguradora) {
+	        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	        Session session = sessionFactory.getCurrentSession();   
+	        Transaction tx = session.beginTransaction();
+	        
+	        Query query = session.createSQLQuery("SELECT s.id as id, c.APELLIDO as cliente, v.MARCA as marca, v.MODELO as modelo, v.PATENTE as patente, v.NUMEROPOLIZA as poliza "
+	                + "FROM servicio s, turno t, cliente c, vehiculo v "
+	                + "WHERE s.TURNO_ID=t.ID and t.CLIENTE_ID=c.ID and t.VEHICULO_ID=v.ID "
+	                + "and MONTH(t.fecha) = :mes "
+	                + "and v.aseguradora_id = :aseguradora");
+	        query.setParameter("mes", mes);
+	        query.setParameter("aseguradora", aseguradora);
+	        
+	        List<Object[]> rows = query.list();
+	        
+	        tx.commit();
+	        
+	        return rows;
+	    }
 
 }

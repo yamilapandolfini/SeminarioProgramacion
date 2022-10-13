@@ -54,13 +54,7 @@ public class GenerarInformeDiarioController {
 	private Button btnImprimirInforme;
 	@FXML
 	private TableView<List<StringProperty>> tblServicios;
-	@FXML
-	private TableColumn<List<StringProperty>, String> tblNroServicio;
-	@FXML
-	private TableColumn<List<StringProperty>, String> tblFecha;
-	@FXML
-	private TableColumn<List<StringProperty>, String> tblConforme;
-	
+
 	@FXML
 	public void initialize() {
 		
