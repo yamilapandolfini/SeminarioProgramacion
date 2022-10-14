@@ -7,13 +7,21 @@ import javax.persistence.*;
 
 public class Vehiculo {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
+    @Column(name = "MARCA")
     private String marca;
+    @Column(name = "MODELO")
     private String modelo;
+    @Column(name = "ANOFABRICACION")
     private String anoFabricacion;
+    @Column(name = "PATENTE")
     private String patente;
-    private String companiaSeguro;
+    @Column(name = "aseguradora_id")
+    private Integer aseguradora;
+    @Column(name = "NUMEROPOLIZA")
     private String numeroPoliza;
     @ManyToOne()
     @JoinColumn(name = "CLIENTE_ID")
@@ -59,12 +67,12 @@ public class Vehiculo {
         this.patente = patente;
     }
 
-    public String getCompaniaSeguro() {
-        return companiaSeguro;
+    public Integer getAseguradora() {
+        return aseguradora;
     }
 
-    public void setCompaniaSeguro(String companiaSeguro) {
-        this.companiaSeguro = companiaSeguro;
+    public void setAseguradora(Integer aseguradora) {
+        this.aseguradora = aseguradora;
     }
 
     public String getNumeroPoliza() {
