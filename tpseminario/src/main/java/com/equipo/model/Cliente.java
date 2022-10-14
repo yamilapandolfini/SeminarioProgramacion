@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Cliente")
 @Table(name = "CLIENTE")
 public class Cliente {
 
@@ -12,14 +12,22 @@ public class Cliente {
         DNI, CUIT, OTRO
     }
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
+    @Column(name = "APELLIDO")
     private String apellido;
+    @Column(name = "NOMBRE")
     private String nombre;
+    @Column(name = "TIPO_DOCUMENTO")
     private TipoDocumento tipoDocumento;
+    @Column(name = "DOCUMENTO")
     private String documento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private List<Vehiculo> vehiculos;
+    @Column(name = "TELEFONO")
+    private int telefono;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    //private List<Vehiculo> vehiculos;
 
     public Integer getId() {
         return id;
@@ -61,11 +69,19 @@ public class Cliente {
         this.documento = documento;
     }
 
-    public List<Vehiculo> getVehiculos() {
-        return vehiculos;
+    public Integer getTelefono() {
+        return telefono;
     }
 
-    public void setVehiculos(List<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
     }
+    
+//    public List<Vehiculo> getVehiculos() {
+//        return vehiculos;
+//    }
+//
+//    public void setVehiculos(List<Vehiculo> vehiculos) {
+//        this.vehiculos = vehiculos;
+//    }
 }

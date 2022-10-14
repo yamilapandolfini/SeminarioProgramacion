@@ -2,8 +2,8 @@ package com.equipo.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "CLIENTE")
+@Entity(name = "Vehiculo")
+@Table(name = "VEHICULO")
 
 public class Vehiculo {
 
@@ -24,7 +24,7 @@ public class Vehiculo {
     @Column(name = "NUMEROPOLIZA")
     private String numeroPoliza;
     @ManyToOne()
-    @JoinColumn(name = "CLIENTE_ID")
+    @JoinColumn(name = "CLIENTE_ID", updatable=false, insertable=false)
     private Cliente cliente;
 
     public Integer getId() {

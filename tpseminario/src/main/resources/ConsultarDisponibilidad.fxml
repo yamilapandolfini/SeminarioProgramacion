@@ -33,15 +33,17 @@
       <Label fx:id="lblFecha" text="Fecha" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label fx:id="lblEspecialidad" text="Especialidad" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <Label fx:id="lblMecanico" text="Mecánico" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <ComboBox fx:id="cboEspecialidad" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <ComboBox fx:id="cboEspecialidad" onAction="#especialidadSelected" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
       <ComboBox fx:id="cboMecanico" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <DatePicker fx:id="picFecha" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <ListView fx:id="lstHorariosDisponibles" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.rowSpan="5" />
-      <Button fx:id="btnSeleccionar" mnemonicParsing="false" text="Seleccionar" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <Button fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <ListView fx:id="lstHorariosDisponibles" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.rowSpan="4" />
+      <Button fx:id="btnSeleccionar" mnemonicParsing="false" text="Seleccionar" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <Button fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
       <Label fx:id="lblHorariosDisponibles" text="Horarios disponibles" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Button fx:id="btnVerificar" mnemonicParsing="false" onAction="#verifyAvailability" text="Verificar" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label fx:id="lblError" textFill="RED" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
    </children>
 </GridPane>

@@ -1,5 +1,7 @@
 package com.equipo.model;
 
+import java.time.LocalTime;
+
 import javax.persistence.*;
 
 @Entity
@@ -37,7 +39,8 @@ public class Mecanico {
 			return label; 
 		}
     }
-
+   
+    
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
