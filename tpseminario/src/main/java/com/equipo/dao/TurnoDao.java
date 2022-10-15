@@ -53,7 +53,14 @@ public class TurnoDao implements Dao<Turno>{
 
 	@Override
 	public void eliminar(Turno o) {
-		// TODO Auto-generated method stub
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createSQLQuery(
+	            "delete from Turno where id = :turnoid");
+        query.setParameter("turnoid", o.getId());		
+		query.executeUpdate();        
+		tx.commit();
 		
 	}
 	
