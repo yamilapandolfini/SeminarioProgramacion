@@ -134,7 +134,7 @@ public class TurnoDao implements Dao<Turno>{
 	}
 	
 	   @SuppressWarnings({ "deprecation", "unchecked" })
-	    public Vehiculo obtenerVehiculo(Integer turnoId) {
+	   public Vehiculo obtenerVehiculo(Integer turnoId) {
 	       
 	        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	        Session session = sessionFactory.getCurrentSession();
@@ -153,5 +153,18 @@ public class TurnoDao implements Dao<Turno>{
 	        
 	        return ve;
 	    }
+	   
+	@SuppressWarnings("deprecation")
+    public void cambiarEstado(Turno o, int estado) {
+           SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+           Session session = sessionFactory.getCurrentSession();
+           Transaction tx = session.beginTransaction();
+           Query query = session.createSQLQuery(
+                   "UPDATE Turno SET Estado = :estado WHERE id = :turnoid ");        
+           query.setParameter("estado", estado);
+           query.setParameter("turnoid", o.getId());           
+           query.executeUpdate();        
+           tx.commit();
+       }
 	
 }

@@ -36,8 +36,11 @@ public class ServicioDao implements Dao<Servicio> {
 
 	@Override
 	public void modificar(Servicio s) {
-
-		
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();   
+        Transaction tx = session.beginTransaction();
+        session.update(s);
+        tx.commit();
 	}
 
 	public void modificarConformidad(Servicio s) {

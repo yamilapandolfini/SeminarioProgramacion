@@ -59,6 +59,8 @@ public class MostrarServicioController {
     private TextField txtPoliza;
 	@FXML
 	private Button btnBuscar;
+    @FXML
+    private Button btnEditar;
 	@FXML
 	private Label lblNroServicio;
 	@FXML
@@ -110,6 +112,31 @@ public class MostrarServicioController {
 		tblServicios.setItems(list);
 		
 	}
+	
+	@FXML
+    public void clkEditarServicio (ActionEvent event) throws IOException {
+	    
+	    if(tblServicios.getSelectionModel().getSelectedItem() != null) {
+	        if(tblServicios.getSelectionModel().getSelectedItem() != null) {
+	            
+	            Servicio servicio = tblServicios.getSelectionModel().getSelectedItem();
+	            
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(getClass().getResource("/EditarServicio.fxml"));
+	            Parent tableViewParent = loader.load();
+	            Scene tableViewScene = new Scene(tableViewParent);
+	            EditarServicioController controller = loader.getController();
+	            controller.editarServicio(servicio);
+	            
+	            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	            window.setOnCloseRequest(e -> controller.closeWindow());
+	            window.setScene(tableViewScene);
+	            window.show();
+	        }      
+	    }    
+	}
+	
+	
 	
 	@FXML
 	public void clkCargarPlanilla(ActionEvent event) {

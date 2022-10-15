@@ -202,45 +202,7 @@ public class CargarPlanillaDeTrabajoController {
 		}	
 	}
 	
-	   @FXML
-	    public void editarServicio(Servicio servicio) throws IOException {
-	       
-	        lblInicio.setText("Editar servicio: " + servicio.getId());
-	        
-	        ObservableList<Insumo> listInsumos = FXCollections.observableArrayList(servicio.getInsumos());
-	        tblNombreDB.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
-	        tblMarcaDB.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
-	        tblModeloDB.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
-	        tblNumeroParteDB.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
-	        tblInsumos.setItems(listInsumos);
-	        
-	        ObservableList<Trabajo> listTrabajos = FXCollections.observableArrayList(servicio.getTrabajos());
-	            
-	        tblServicios.setItems(listTrabajos);
-	        
-//	        Integer cantTrabajos = tblServicios.getItems().size();
-//	        Integer cantInsumos = tblInsumos.getItems().size();
-//	        
-//	        if ((cantTrabajos != 0) || (cantInsumos != 0)) {
-//	            
-//	            ServicioDao servicioDAO = new ServicioDao();
-//	            Servicio servicio = new Servicio();
-//	            
-//	            if (cantTrabajos != 0) {
-//	                ObservableList<Trabajo> listServicios = tblServicios.getItems();
-//	                servicio.setTrabajos(listServicios);
-//	            }
-//	            else {
-//	                ObservableList<Insumo> listInsumos = tblInsumos.getItems();
-//	                servicio.setInsumos(listInsumos);
-//	            }
-//	            
-//	        servicioDAO.insertar(servicio); 
-//	            
-//	        closeWindow();  
-//	        }   
-	    }
-	
+
 	public void closeWindow() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/MostrarServicio.fxml"));
