@@ -84,6 +84,8 @@ public class CargarPlanillaDeTrabajoController {
 	private Button btnCerrar;
 	@FXML
 	private Button btnCancelar;
+	@FXML
+	private Servicio servicio;
 	
 	@FXML
 	public void initialize() {
@@ -178,7 +180,8 @@ public class CargarPlanillaDeTrabajoController {
 	
 	@FXML
 	public void clkGuardar(ActionEvent event) throws IOException {
-		
+	    
+	    Boolean cambio = false;
 		Integer cantTrabajos = tblServicios.getItems().size();
 		Integer cantInsumos = tblInsumos.getItems().size();
 		
@@ -190,18 +193,28 @@ public class CargarPlanillaDeTrabajoController {
 			if (cantTrabajos != 0) {
 				ObservableList<Trabajo> listServicios = tblServicios.getItems();
 				servicio.setTrabajos(listServicios);
+				cambio = true;
 			}
-			else {
+			if (cantInsumos != 0)  {
 				ObservableList<Insumo> listInsumos = tblInsumos.getItems();
 				servicio.setInsumos(listInsumos);
+				cambio = true;
 			}
-			
-		servicioDAO.insertar(servicio);	
+	
+	    if (cambio) {
+	        servicioDAO.modificar(this.servicio); 
+	    }	
+		
+		this.servicio = null;
 			
 		closeWindow();	
 		}	
 	}
 	
+    @FXML
+    public void planillaServicio(Servicio servicio) {
+        this.servicio = servicio; 
+    }
 
 	public void closeWindow() {
 		try {

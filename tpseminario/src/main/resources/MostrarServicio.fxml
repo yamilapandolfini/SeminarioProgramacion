@@ -21,20 +21,20 @@
             <TableColumn fx:id="tblComentarios" prefWidth="150.0" resizable="false" text="Comentarios" />
         </columns>
       </TableView>
-      <Button fx:id="btnCancelar" layoutX="496.0" layoutY="378.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED">
+      <Button fx:id="btnCancelar" layoutX="556.0" layoutY="378.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnGenerarConstancia" layoutX="360.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkGenerarConstancia" text="Generar Constancia" />
-      <Button fx:id="btnCargarPlanilla" layoutX="246.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkCargarPlanilla" text="Cargar Planilla" />
-      <Button fx:id="btnImprimir" layoutX="133.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkImprimirFicha" text="Imprimir Ficha" />
+      <Button fx:id="btnGenerarConstancia" layoutX="313.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkGenerarConstancia" text="Generar Constancia" />
+      <Button fx:id="btnCargarPlanilla" layoutX="199.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkCargarPlanilla" text="Cargar Planilla" />
+      <Button fx:id="btnImprimir" layoutX="86.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkImprimirFicha" text="Imprimir Ficha" />
       <Button fx:id="btnBuscar" layoutX="186.0" layoutY="41.0" mnemonicParsing="false" onAction="#clkBuscarServicio" text="Buscar" />
       <Label fx:id="lblNroServicio" alignment="CENTER_RIGHT" layoutX="16.0" layoutY="45.0" text="Nro Servicio" />
       <TextField fx:id="txtNroServicio" layoutX="92.0" layoutY="41.0" prefHeight="25.0" prefWidth="85.0" />
-      <Label fx:id="lblServicioBuscar" layoutX="253.0" layoutY="45.0" textFill="RED">
+      <Label fx:id="lblError" layoutX="253.0" layoutY="45.0" textFill="RED">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Separator layoutX="689.0" layoutY="15.0" orientation="VERTICAL" prefHeight="388.0" prefWidth="5.0" />
@@ -67,6 +67,6 @@
       <TextField fx:id="txtAno" layoutX="781.0" layoutY="303.0" />
       <TextField fx:id="txtPatente" layoutX="781.0" layoutY="333.0" />
       <TextField fx:id="txtPoliza" layoutX="781.0" layoutY="363.0" />
-      <Button fx:id="btnEditar" layoutX="66.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkEditarServicio" text="Editar" />
+      <Button fx:id="btnEditar" layoutX="449.0" layoutY="378.0" mnemonicParsing="false" onAction="#clkEditarServicio" text="Editar Servicio" />
    </children>
 </AnchorPane>

@@ -64,7 +64,7 @@ public class MostrarServicioController {
 	@FXML
 	private Label lblNroServicio;
 	@FXML
-	private Label lblServicioBuscar;
+	private Label lblError;
 	@FXML
 	private TextField txtNroServicio;
 	@FXML
@@ -117,8 +117,7 @@ public class MostrarServicioController {
     public void clkEditarServicio (ActionEvent event) throws IOException {
 	    
 	    if(tblServicios.getSelectionModel().getSelectedItem() != null) {
-	        if(tblServicios.getSelectionModel().getSelectedItem() != null) {
-	            
+	        
 	            Servicio servicio = tblServicios.getSelectionModel().getSelectedItem();
 	            
 	            FXMLLoader loader = new FXMLLoader();
@@ -131,37 +130,36 @@ public class MostrarServicioController {
 	            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 	            window.setOnCloseRequest(e -> controller.closeWindow());
 	            window.setScene(tableViewScene);
-	            window.show();
-	        }      
+	            window.show();    
 	    }    
 	}
 	
 	
 	
 	@FXML
-	public void clkCargarPlanilla(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/CargarPlanillaDeTrabajo.fxml"));
-			
-			Parent root = loader.load();
-			
-			CargarPlanillaDeTrabajoController controlador = loader.getController();
-			
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			
-			stage.setScene(scene);
-			stage.setTitle("Cargar planilla");
-			stage.show();
-			
-			stage.setOnCloseRequest(e -> controlador.closeWindow());
-			
-			Stage myStage = (Stage) this.tblServicios.getScene().getWindow();
-			
-			myStage.close();
-		} catch (IOException ex) {
-			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-		}
+	public void clkCargarPlanilla(ActionEvent event) throws IOException {
+	      
+	    if(tblServicios.getSelectionModel().getSelectedItem() != null) {
+	        
+	        Servicio servicio = tblServicios.getSelectionModel().getSelectedItem();
+	        
+	        if ((servicio.getInsumos().size() == 0) & (servicio.getTrabajos().size() == 0)) {
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(getClass().getResource("/CargarPlanillaDeTrabajo.fxml"));
+	            Parent tableViewParent = loader.load();
+	            Scene tableViewScene = new Scene(tableViewParent);          
+	            CargarPlanillaDeTrabajoController controller = loader.getController();
+	            controller.planillaServicio(servicio);
+	            
+	            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	            window.setOnCloseRequest(e -> controller.closeWindow());
+	            window.setScene(tableViewScene);
+	            window.show();
+	        }
+	        else {
+	            lblError.setText("Ya se cargó la Planilla correspondiente al servicio.");
+	        }
+	    }
 	}
 
 	@FXML
@@ -203,7 +201,7 @@ public class MostrarServicioController {
 			}
 			else
 			{
-				lblServicioBuscar.setText("El número de servicio no existe");
+				lblError.setText("El número de servicio no existe");
 			}
 		}
 		else 
