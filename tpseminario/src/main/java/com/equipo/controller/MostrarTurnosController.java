@@ -292,6 +292,7 @@ public class MostrarTurnosController {
         
         Servicio servicioNuevo = new Servicio();
         servicioNuevo.setTurno(turnoSelected.getId());
+        servicioNuevo.setConforme(true);
         ServicioDao servicioDao = new ServicioDao();
         servicioDao.insertar(servicioNuevo);
         
