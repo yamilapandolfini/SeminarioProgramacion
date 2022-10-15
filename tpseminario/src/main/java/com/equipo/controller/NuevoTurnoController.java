@@ -558,26 +558,33 @@ public class NuevoTurnoController {
     
 	// Event Listener on Button[#btnGenerarFicha].onAction
 	@FXML
-	public void clkGenerarFicha(ActionEvent event) throws IOException {
+	public void clkCrearTurno(ActionEvent event) throws IOException {
 		try {
 			guardarTurno(nuevoTurno);
 			
 			Cliente nuevoCliente = new Cliente();
 						
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ImprimirFicha.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/MostrarTurnos.fxml"));
 			
 			Parent root = loader.load();
 			
-			ImprimirFichaController controlador = loader.getController();
+			MostrarTurnosController controlador = loader.getController();
 			
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			
 			stage.setScene(scene);
-			stage.setTitle("Imprimir ficha");
+			stage.setTitle("Mostrar Turnos");
 			stage.show();
 			
-			stage.setOnCloseRequest(e -> controlador.closeWindow());
+			stage.setOnCloseRequest(e -> {
+                try {
+                    controlador.closeWindow();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            });
 			
 			Stage myStage = (Stage) this.lblNroTurno.getScene().getWindow();
 			

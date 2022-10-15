@@ -57,7 +57,7 @@
       <Label fx:id="lblApellido" text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Label fx:id="lblNombre" text="Nombre" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <Label fx:id="lblNumeroPoliza" text="Número de póliza" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-      <Button fx:id="btnGenerarFicha" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clkGenerarFicha" text="Generar ficha" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="16" />
+      <Button fx:id="btnCrearTurno" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clkCrearTurno" text="Crear Turno" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="16" />
       <Label fx:id="lblEmpresaAseguradora" text="Empresa aseguradora" GridPane.columnIndex="1" GridPane.rowIndex="14" />
       <TextField fx:id="txtFecha" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <TextField fx:id="txtHorario" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />

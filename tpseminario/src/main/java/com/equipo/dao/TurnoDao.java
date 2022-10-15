@@ -14,6 +14,7 @@ import org.hibernate.Transaction;
 
 import com.equipo.model.Cliente;
 import com.equipo.model.Insumo;
+import com.equipo.model.Servicio;
 import com.equipo.model.Turno;
 import com.equipo.model.Vehiculo;
 import com.equipo.util.HibernateUtil;
@@ -83,6 +84,32 @@ public class TurnoDao implements Dao<Turno>{
 		
 		return horarioList;
 	}
+
+    @SuppressWarnings("unchecked")  
+    public ObservableList<Turno> obtenerPorFecha(LocalDate fecha) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        
+        Date fechaConv = Date.valueOf(fecha);
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery("FROM Turno WHERE fecha = :fecha");
+        query.setParameter("fecha", fechaConv);
+        ObservableList<Turno> turnoList = FXCollections.observableArrayList(query.list());
+        tx.rollback();
+        
+        return turnoList;
+    }	
+	
+    public Turno obtenerUno(Integer id){
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();   
+        Transaction tx = session.beginTransaction();
+        Turno turno = new Turno();
+        turno = (Turno) session.get(Turno.class, id);
+        tx.rollback();
+        
+        return turno;
+    }   
 	
 	@SuppressWarnings({ "deprecation", "unchecked" })
     public Cliente obtenerCliente(Integer turnoId) {
