@@ -23,7 +23,7 @@ public class Cliente {
     @Column(name = "TIPO_DOCUMENTO")
     private int tipoDocumento;
     @Column(name = "DOCUMENTO")
-    private int documento;
+    private Integer documento;
     @Column(name = "TELEFONO")
     private int telefono;
 
@@ -59,11 +59,12 @@ public class Cliente {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public int getDocumento() {
+
+    public Integer getDocumento() {
         return documento;
     }
 
-    public void setDocumento(int documento) {
+    public void setDocumento(Integer documento) {
         this.documento = documento;
     }
 

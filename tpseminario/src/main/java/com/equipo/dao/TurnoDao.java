@@ -3,6 +3,9 @@ package com.equipo.dao;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,6 +18,8 @@ import com.equipo.model.Turno;
 import com.equipo.model.Vehiculo;
 import com.equipo.util.HibernateUtil;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
