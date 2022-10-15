@@ -96,27 +96,27 @@ public class EditarTurnoController {
 	@FXML
 	public void clkConsultarDisponibilidad(ActionEvent event) throws IOException {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ConsultarDisponibilidad.fxml"));
-			
-			Parent root = loader.load();
-			
-			ConsultarDisponibilidadController controlador = loader.getController();
-			
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			
-			stage.setScene(scene);
-			stage.setTitle("Consultar disponibilidad");
-			stage.show();
-			
-			stage.setOnCloseRequest(e -> controlador.closeWindow());
-			
-			Stage myStage = (Stage) this.lblNroTurno.getScene().getWindow();
-			
-			myStage.close();
-		} catch (IOException ex) {
-			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-		}
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/ConsultarDisponibilidad.fxml"));
+//			
+//			Parent root = loader.load();
+//			
+//			ConsultarDisponibilidadController controlador = loader.getController();
+//			
+//			Scene scene = new Scene(root);
+//			Stage stage = new Stage();
+//			
+//			stage.setScene(scene);
+//			stage.setTitle("Consultar disponibilidad");
+//			stage.show();
+//			
+//			stage.setOnCloseRequest(e -> controlador.closeWindow());
+//			
+//			Stage myStage = (Stage) this.lblNroTurno.getScene().getWindow();
+//			
+//			myStage.close();
+//		} catch (IOException ex) {
+//			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+		} finally {}
 	}
 	// Event Listener on Button[#btnCancelar].onAction
 	@FXML

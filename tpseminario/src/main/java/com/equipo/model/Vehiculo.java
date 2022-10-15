@@ -90,5 +90,9 @@ public class Vehiculo {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    
+    public String toString() {
+        return this.patente;
+    }
 
 }

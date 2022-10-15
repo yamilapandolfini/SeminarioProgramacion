@@ -27,8 +27,20 @@ public class TurnoDao implements Dao<Turno>{
 
 	@Override
 	public void insertar(Turno o) {
-		// TODO Auto-generated method stub
-		
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createSQLQuery(
+	            "insert into Turno (cliente_id, vehiculo_id, mecanico_id, fecha, horario, estado) " +
+                "values (:clienteid, :vehiculoid, :mecanicoid, :fecha, :horario, :estado)");        
+        query.setParameter("clienteid", o.getCliente().getId());
+        query.setParameter("vehiculoid", o.getVehiculo().getId());
+        query.setParameter("mecanicoid", o.getMecanico().getId());
+        query.setParameter("fecha", o.getFecha());
+        query.setParameter("horario", o.getHorario());
+        query.setParameter("estado", 0);		
+		query.executeUpdate();        
+		tx.commit();
 	}
 
 	@Override
