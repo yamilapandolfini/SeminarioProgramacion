@@ -120,17 +120,32 @@ public class MostrarServicioController {
 	        
 	            Servicio servicio = tblServicios.getSelectionModel().getSelectedItem();
 	            
-	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(getClass().getResource("/EditarServicio.fxml"));
-	            Parent tableViewParent = loader.load();
-	            Scene tableViewScene = new Scene(tableViewParent);
-	            EditarServicioController controller = loader.getController();
-	            controller.editarServicio(servicio);
+	            if (! servicio.getConforme()) {
+	                FXMLLoader loader = new FXMLLoader();
+	                loader.setLocation(getClass().getResource("/EditarServicio.fxml"));
+	                Parent tableViewParent = loader.load();
+	                Scene tableViewScene = new Scene(tableViewParent);
+	                EditarServicioController controller = loader.getController();
+	                controller.editarServicio(servicio);
+	                
+	                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	                window.setOnCloseRequest(e -> controller.closeWindow());
+	                window.setScene(tableViewScene);
+	                window.show();  
+	            }
+	            else
+	            {
+	                if ((servicio.getInsumos().size() == 0) & (servicio.getTrabajos().size() == 0)){
+	                    
+	                    lblError.setText("Debe cargar la planilla antes de poder editar el servicio");
+	                }
+	                else
+	                {
+	                    lblError.setText("Servicio cerrado como conforme.");
+	                }
+	                
+	            }
 	            
-	            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	            window.setOnCloseRequest(e -> controller.closeWindow());
-	            window.setScene(tableViewScene);
-	            window.show();    
 	    }    
 	}
 	
@@ -156,7 +171,8 @@ public class MostrarServicioController {
 	            window.setScene(tableViewScene);
 	            window.show();
 	        }
-	        else {
+	        else 
+	        {
 	            lblError.setText("Ya se cargó la Planilla correspondiente al servicio.");
 	        }
 	    }
