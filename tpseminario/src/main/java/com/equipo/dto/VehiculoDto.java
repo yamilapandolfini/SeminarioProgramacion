@@ -19,7 +19,7 @@ public class VehiculoDto {
 		
 	}
 
-	private void setAnoFabricacion(String anoFabricacion) {
+	private void setAnoFabricacion(Integer integer) {
 		// TODO Auto-generated method stub
 		
 	}

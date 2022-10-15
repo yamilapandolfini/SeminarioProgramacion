@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -20,9 +23,11 @@ public class Servicio {
     private Integer turno_id;
 	
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Trabajo> trabajos;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Insumo> insumos;
     
 	@Column(name = "CONFORME")
@@ -57,6 +62,26 @@ public class Servicio {
 
     public List<Insumo> getInsumos() {
         return insumos;
+    }
+    
+    public String getInsumosUsados() {
+        
+        if (this.insumos != null && this.insumos.size() > 0) {
+            return "Si";
+        }
+        else {
+            return "-";
+        }
+    }
+    
+    public String getTrabajosRealizados() {
+        
+        if (this.trabajos != null && this.trabajos.size() > 0) {
+            return "Si";
+        }
+        else {
+            return "-";
+        }
     }
 
     public void setInsumos(List<Insumo> insumos) {

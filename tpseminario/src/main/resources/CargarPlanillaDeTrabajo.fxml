@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -57,7 +56,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblPatente" layoutX="14.0" layoutY="18.0" text="Nro Turno" />
-      <TextField fx:id="txtTurno" editable="true" layoutX="84.0" layoutY="16.0" prefHeight="25.0" prefWidth="120.0" />
+      <Label layoutX="14.0" layoutY="37.0" text="Planilla">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

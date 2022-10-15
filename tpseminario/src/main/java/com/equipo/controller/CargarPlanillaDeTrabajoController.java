@@ -35,8 +35,6 @@ public class CargarPlanillaDeTrabajoController {
 	@FXML
 	private Label lblPatente;
 	@FXML
-	private TextField txtTurno;
-	@FXML
 	private Button btnBuscar;
 	@FXML
 	private TableView<Insumo> tblInsumos;
@@ -189,8 +187,6 @@ public class CargarPlanillaDeTrabajoController {
 			ServicioDao servicioDAO = new ServicioDao();
 			Servicio servicio = new Servicio();
 			
-			servicio.setTurno(Integer.valueOf(txtTurno.getText()));
-			
 			if (cantTrabajos != 0) {
 				ObservableList<Trabajo> listServicios = tblServicios.getItems();
 				servicio.setTrabajos(listServicios);
@@ -209,7 +205,7 @@ public class CargarPlanillaDeTrabajoController {
 	
 	public void closeWindow() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/MostrarServicio.fxml"));
 			
 			Parent root = loader.load();
 			
@@ -220,7 +216,7 @@ public class CargarPlanillaDeTrabajoController {
 	        stage.setTitle("Administración de Turnos");
 			stage.show();
 			
-			Stage myStage = (Stage) this.lblPatente.getScene().getWindow();
+			Stage myStage = (Stage) this.tblInsumos.getScene().getWindow();
 			myStage.close();
 			
 			myStage.close();

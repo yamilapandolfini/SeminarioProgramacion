@@ -16,7 +16,7 @@ public class Vehiculo {
     @Column(name = "MODELO")
     private String modelo;
     @Column(name = "ANOFABRICACION")
-    private String anoFabricacion;
+    private Integer anoFabricacion;
     @Column(name = "PATENTE")
     private String patente;
     @Column(name = "aseguradora_id")
@@ -51,11 +51,11 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public String getAnoFabricacion() {
+    public Integer getAnoFabricacion() {
         return anoFabricacion;
     }
 
-    public void setAnoFabricacion(String anoFabricacion) {
+    public void setAnoFabricacion(Integer anoFabricacion) {
         this.anoFabricacion = anoFabricacion;
     }
 
