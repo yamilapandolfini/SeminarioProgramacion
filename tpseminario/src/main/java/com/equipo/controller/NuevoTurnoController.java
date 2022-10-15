@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -19,6 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.UnaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -240,6 +243,19 @@ public class NuevoTurnoController {
 		cboBCEspecialidad.getItems().setAll(Mecanico.Especialidad.values());
 		lblBCError.setText("");
 
+		//TextFormater
+		UnaryOperator<Change> filter = change -> {
+		    String text = change.getText();
+
+		    if (text.matches("[0-9]*")) {
+		        return change;
+		    }
+
+		    return null;
+		};
+		TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+		txtCLTelefono.setTextFormatter(textFormatter);
+		
 		// Inicializo Buscar Cliente
 		
 		cboCLTipoDocumento.getItems().setAll(Cliente.TipoDocumento.values());

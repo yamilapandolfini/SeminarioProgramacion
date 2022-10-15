@@ -26,7 +26,8 @@ import javafx.collections.ObservableList;
 
 public class TurnoDao implements Dao<Turno>{
 
-	@Override
+	@SuppressWarnings("deprecation")
+    @Override
 	public void insertar(Turno o) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
@@ -39,7 +40,7 @@ public class TurnoDao implements Dao<Turno>{
         query.setParameter("mecanicoid", o.getMecanico().getId());
         query.setParameter("fecha", o.getFecha());
         query.setParameter("horario", o.getHorario());
-        query.setParameter("estado", 0);		
+        query.setParameter("estado", 2);		
 		query.executeUpdate();        
 		tx.commit();
 	}
