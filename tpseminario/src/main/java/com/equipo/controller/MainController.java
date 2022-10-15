@@ -114,31 +114,31 @@ public class MainController {
 		}
 	}
 	// Event Listener on Button[#btnGestionPlanilla].onAction
-	@FXML
-	public void clkCargarPlanilla(ActionEvent event) throws IOException {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/CargarPlanillaDeTrabajo.fxml"));
-			
-			Parent root = loader.load();
-			
-			CargarPlanillaDeTrabajoController controlador = loader.getController();
-			
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			
-			stage.setScene(scene);
-			stage.setTitle("Cargar planilla");
-			stage.show();
-			
-			stage.setOnCloseRequest(e -> controlador.closeWindow());
-			
-			Stage myStage = (Stage) this.btnInformeMensual.getScene().getWindow();
-			
-			myStage.close();
-		} catch (IOException ex) {
-			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+//	@FXML
+//	public void clkCargarPlanilla(ActionEvent event) throws IOException {
+//		try {
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/CargarPlanillaDeTrabajo.fxml"));
+//			
+//			Parent root = loader.load();
+//			
+//			CargarPlanillaDeTrabajoController controlador = loader.getController();
+//			
+//			Scene scene = new Scene(root);
+//			Stage stage = new Stage();
+//			
+//			stage.setScene(scene);
+//			stage.setTitle("Cargar planilla");
+//			stage.show();
+//			
+//			stage.setOnCloseRequest(e -> controlador.closeWindow());
+//			
+//			Stage myStage = (Stage) this.btnInformeMensual.getScene().getWindow();
+//			
+//			myStage.close();
+//		} catch (IOException ex) {
+//			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+//		}
+//	}
 	// Event Listener on Button[#btnInformeDiario].onAction
 	@FXML
 	public void clkInformeDiario(ActionEvent event) throws IOException {

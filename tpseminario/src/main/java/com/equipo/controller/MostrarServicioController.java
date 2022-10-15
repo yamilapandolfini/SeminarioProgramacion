@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,10 +20,13 @@ import java.util.logging.Logger;
 import com.equipo.dao.MecanicoDao;
 import com.equipo.dao.ServicioDao;
 import com.equipo.dao.TrabajoDao;
+import com.equipo.dao.TurnoDao;
+import com.equipo.model.Cliente;
 import com.equipo.model.Insumo;
 import com.equipo.model.Mecanico;
 import com.equipo.model.Servicio;
 import com.equipo.model.Trabajo;
+import com.equipo.model.Vehiculo;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +40,23 @@ import javafx.scene.control.TableView;
 
 public class MostrarServicioController {
 	@FXML
-	private Label lblFecha;
+	private TextField txtApellido;
+	@FXML
+	private TextField txtNombre;
+    @FXML
+    private TextField txtDocumento;
+    @FXML
+    private TextField txtTelefono;
+    @FXML
+    private TextField txtMarca;
+    @FXML
+    private TextField txtModelo;
+    @FXML
+    private TextField txtAno;
+    @FXML
+    private TextField txtPatente;
+    @FXML
+    private TextField txtPoliza;
 	@FXML
 	private Button btnBuscar;
 	@FXML
@@ -46,13 +66,19 @@ public class MostrarServicioController {
 	@FXML
 	private TextField txtNroServicio;
 	@FXML
-	private DatePicker picFecha;
-	@FXML
 	private TableView<Servicio> tblServicios;
 	@FXML
 	private TableColumn<Servicio, Integer> tblNroServicio;
 	@FXML
+    private TableColumn<Servicio, Integer> tblTurno;
+	@FXML
+	private TableColumn<Servicio, String> tblTrabajos;
+	@FXML
+    private TableColumn<Servicio, String> tblInsumos;
+	@FXML
 	private TableColumn<Servicio, String> tblConforme;
+	@FXML
+    private TableColumn<Servicio, String> tblComentarios;
 	@FXML
 	private Button btnCargarPlanilla;
 	@FXML
@@ -67,7 +93,7 @@ public class MostrarServicioController {
 	
 	@FXML
 	public void initialize() {
-		
+	   
 		cargarServicios();
 	}
 	
@@ -76,7 +102,11 @@ public class MostrarServicioController {
 		ServicioDao servicio = new ServicioDao();
 		ObservableList<Servicio> list = servicio.obtenerTodos();
 		tblNroServicio.setCellValueFactory(new PropertyValueFactory<Servicio, Integer>("id"));
+		tblTurno.setCellValueFactory(new PropertyValueFactory<Servicio, Integer>("turno"));
+		tblInsumos.setCellValueFactory(new PropertyValueFactory<Servicio, String>("insumosUsados"));
+		tblTrabajos.setCellValueFactory(new PropertyValueFactory<Servicio, String>("trabajosRealizados"));
 		tblConforme.setCellValueFactory(new PropertyValueFactory<Servicio, String>("conforme"));
+		tblComentarios.setCellValueFactory(new PropertyValueFactory<Servicio, String>("comentarios"));
 		tblServicios.setItems(list);
 		
 	}
@@ -99,7 +129,7 @@ public class MostrarServicioController {
 			
 			stage.setOnCloseRequest(e -> controlador.closeWindow());
 			
-			Stage myStage = (Stage) this.lblFecha.getScene().getWindow();
+			Stage myStage = (Stage) this.tblServicios.getScene().getWindow();
 			
 			myStage.close();
 		} catch (IOException ex) {
@@ -155,6 +185,46 @@ public class MostrarServicioController {
 		}
 	}
 	
+	@FXML
+	public void clkBuscarTurno(MouseEvent  event) {
+	    
+	    if(tblServicios.getSelectionModel().getSelectedItem() != null) {
+	        
+	        Servicio servicioSelected = tblServicios.getSelectionModel().getSelectedItem();
+	        TurnoDao turnoDao = new TurnoDao();
+	        Integer turnoId = servicioSelected.getTurno();
+	        Cliente cliente = turnoDao.obtenerCliente(turnoId);
+	        
+	        if (cliente != null) {
+	            mostrarCliente(cliente);
+	        }
+        
+	        Vehiculo vehiculo = turnoDao.obtenerVehiculo(turnoId);
+	        
+	        if (vehiculo != null) {
+	            mostrarVehiculo(vehiculo);
+	        }
+	        
+	    }
+	}
+	
+	@FXML
+	public void mostrarCliente(Cliente cliente) {
+	    txtNombre.setText(cliente.getNombre());
+	    txtApellido.setText(cliente.getApellido());
+	    txtDocumento.setText(cliente.getDocumento().toString());
+	    txtTelefono.setText(cliente.getTelefono().toString());
+	}
+	
+	@FXML
+	public void mostrarVehiculo(Vehiculo vehiculo) {
+	    txtMarca.setText(vehiculo.getMarca());
+	    txtModelo.setText(vehiculo.getModelo());
+	    txtAno.setText(vehiculo.getAnoFabricacion().toString());
+	    txtPatente.setText(vehiculo.getPatente());
+	    txtPoliza.setText(vehiculo.getNumeroPoliza());
+	}
+	
 	// Event Listener on Button[#btnImprimi].onAction
 	@FXML
 	public void clkImprimirFicha(ActionEvent event) throws IOException {
@@ -188,10 +258,9 @@ public class MostrarServicioController {
 	        stage.setTitle("Administración de Turnos");
 			stage.show();
 			
-			Stage myStage = (Stage) this.lblFecha.getScene().getWindow();
+			Stage myStage = (Stage) this.tblServicios.getScene().getWindow();
 			myStage.close();
 			
-			myStage.close();
 		} catch (IOException ex) {
 			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
 		}
