@@ -21,13 +21,11 @@ public class Cliente {
     @Column(name = "NOMBRE")
     private String nombre;
     @Column(name = "TIPO_DOCUMENTO")
-    private TipoDocumento tipoDocumento;
+    private int tipoDocumento;
     @Column(name = "DOCUMENTO")
-    private String documento;
+    private int documento;
     @Column(name = "TELEFONO")
     private int telefono;
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
-    //private List<Vehiculo> vehiculos;
 
     public Integer getId() {
         return id;
@@ -53,19 +51,19 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public TipoDocumento getTipoDocumento() {
+    public int getTipoDocumento() {
         return tipoDocumento;
     }
 
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+    public void setTipoDocumento(int tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public String getDocumento() {
+    public int getDocumento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public void setDocumento(int documento) {
         this.documento = documento;
     }
 
@@ -75,13 +73,6 @@ public class Cliente {
 
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
-    }
-    
-//    public List<Vehiculo> getVehiculos() {
-//        return vehiculos;
-//    }
-//
-//    public void setVehiculos(List<Vehiculo> vehiculos) {
-//        this.vehiculos = vehiculos;
-//    }
+    }    
+
 }

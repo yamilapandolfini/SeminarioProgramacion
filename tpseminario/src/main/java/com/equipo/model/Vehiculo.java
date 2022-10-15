@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Vehiculo {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
     @Column(name = "MARCA")
@@ -16,11 +16,11 @@ public class Vehiculo {
     @Column(name = "MODELO")
     private String modelo;
     @Column(name = "ANOFABRICACION")
-    private String anoFabricacion;
+    private Integer anoFabricacion;
     @Column(name = "PATENTE")
     private String patente;
-    @Column(name = "COMPANIASEGURO")
-    private String companiaSeguro;
+    @Column(name = "aseguradora_id")
+    private Integer aseguradora;
     @Column(name = "NUMEROPOLIZA")
     private String numeroPoliza;
     @ManyToOne()
@@ -51,11 +51,11 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public String getAnoFabricacion() {
+    public Integer getAnoFabricacion() {
         return anoFabricacion;
     }
 
-    public void setAnoFabricacion(String anoFabricacion) {
+    public void setAnoFabricacion(Integer anoFabricacion) {
         this.anoFabricacion = anoFabricacion;
     }
 
@@ -67,12 +67,12 @@ public class Vehiculo {
         this.patente = patente;
     }
 
-    public String getCompaniaSeguro() {
-        return companiaSeguro;
+    public Integer getAseguradora() {
+        return aseguradora;
     }
 
-    public void setCompaniaSeguro(String companiaSeguro) {
-        this.companiaSeguro = companiaSeguro;
+    public void setAseguradora(Integer aseguradora) {
+        this.aseguradora = aseguradora;
     }
 
     public String getNumeroPoliza() {
@@ -89,6 +89,10 @@ public class Vehiculo {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public String toString() {
+        return this.patente;
     }
 
 }

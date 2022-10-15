@@ -13,13 +13,13 @@ public class ClienteDto {
 		dto.setId(cliente.getId());
 		dto.setApellido(cliente.getApellido());
 		dto.setNombre(cliente.getNombre());
-		dto.setDocumento(cliente.getTipoDocumento() + " " + cliente.getDocumento());
+		dto.setDocumento(cliente.getDocumento());
 		
 		return dto;
 		
 	}
 
-	private void setDocumento(String string) {
+	private void setDocumento(Integer integer) {
 		// TODO Auto-generated method stub
 		
 	}

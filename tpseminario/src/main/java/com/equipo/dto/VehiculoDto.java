@@ -14,12 +14,12 @@ public class VehiculoDto {
 		dto.setAnoFabricacion(vehiculo.getAnoFabricacion());
 		dto.setModelo(vehiculo.getModelo());
 		dto.setPatente(vehiculo.getPatente());
-		dto.setPoliza(vehiculo.getCompaniaSeguro() + " " + vehiculo.getNumeroPoliza() + " " + vehiculo.getId());
+		dto.setPoliza(vehiculo.getAseguradora().toString() + " " + vehiculo.getNumeroPoliza() + " " + vehiculo.getId());
 		return dto;
 		
 	}
 
-	private void setAnoFabricacion(String anoFabricacion) {
+	private void setAnoFabricacion(Integer integer) {
 		// TODO Auto-generated method stub
 		
 	}
