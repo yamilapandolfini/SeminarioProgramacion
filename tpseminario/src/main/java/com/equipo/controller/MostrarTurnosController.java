@@ -4,8 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -176,39 +178,7 @@ public class MostrarTurnosController {
 			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	// Event Listener on Button[#btnEditarTurno].onAction
-	@FXML
-	public void clkEditarTurno(ActionEvent event) throws IOException {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditarTurno.fxml"));
-			
-			Parent root = loader.load();
-			
-			EditarTurnoController controlador = loader.getController();
-			
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			
-			stage.setScene(scene);
-			stage.setTitle("Editar turno");
-			stage.show();
-			
-			stage.setOnCloseRequest(e -> {
-				try {
-					controlador.closeWindow();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			});
-			
-			Stage myStage = (Stage) this.lblFecha.getScene().getWindow();
-			
-			myStage.close();
-		} catch (IOException ex) {
-			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+
 	
     @FXML
     public void clkBuscarTurno(MouseEvent  event) {
@@ -228,8 +198,7 @@ public class MostrarTurnosController {
             
             if (vehiculo != null) {
                 mostrarVehiculo(vehiculo);
-            }
-            
+            }            
         }
     }
 
@@ -254,32 +223,26 @@ public class MostrarTurnosController {
 	@FXML
 	public void clkEliminarTurno(ActionEvent event) throws IOException {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/EliminarTurno.fxml"));
-			
-			Parent root = loader.load();
-			
-			EliminarTurnoController controlador = loader.getController();
-			
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			
-			stage.setScene(scene);
-			stage.setTitle("Servicios");
-			stage.show();
-			
-			stage.setOnCloseRequest(e -> {
-				try {
-					controlador.closeWindow();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			});
-			
-			Stage myStage = (Stage) this.lblNroTurno.getScene().getWindow();
-			
-			myStage.close();
-		} catch (IOException ex) {
+			if(tblTurnos.getSelectionModel().getSelectedItem() != null) {
+	            
+				Alert alert = new Alert(AlertType.CONFIRMATION, "¿Desea eliminar este turno?", ButtonType.YES, ButtonType.CANCEL);
+				alert.showAndWait();
+
+				if (alert.getResult() == ButtonType.YES) {
+										
+					Turno turnoSelected = tblTurnos.getSelectionModel().getSelectedItem();
+		            
+					if (turnoSelected.getEstado().ordinal() == 0 || turnoSelected.getEstado().ordinal() == 1 || turnoSelected.getEstado().ordinal() == 2 || turnoSelected.getEstado().ordinal() == 5) {
+						TurnoDao turnoDao = new TurnoDao();		            
+			            turnoDao.eliminar(turnoSelected);
+					} else {
+						Alert alertError = new Alert(AlertType.ERROR, "No se puede eliminar un turno que se encuentra en este estado", ButtonType.OK);
+						alertError.showAndWait();
+					}		            
+				}				
+				cargarTurnos();
+	        }			
+		} catch (Exception ex) {
 			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}

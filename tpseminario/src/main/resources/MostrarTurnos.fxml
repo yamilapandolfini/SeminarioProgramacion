@@ -20,8 +20,7 @@
             <TableColumn fx:id="tblEstado" prefWidth="119.0" text="Estado" />
         </columns>
       </TableView>
-      <Button fx:id="btnNuevoTurno" layoutX="23.0" layoutY="467.0" mnemonicParsing="false" onAction="#clkNuevoTurno" text="Nuevo Turno" />
-      <Button fx:id="btnEditarTurno" layoutX="157.0" layoutY="467.0" mnemonicParsing="false" onAction="#clkEditarTurno" text="Editar Turno" />
+      <Button fx:id="btnNuevoTurno" layoutX="153.0" layoutY="467.0" mnemonicParsing="false" onAction="#clkNuevoTurno" text="Nuevo Turno" />
       <Button fx:id="btnEliminarTurno" layoutX="282.0" layoutY="467.0" mnemonicParsing="false" onAction="#clkEliminarTurno" text="Eliminar Turno" />
       <Button fx:id="btnRegistrarAsistencia" layoutX="415.0" layoutY="467.0" mnemonicParsing="false" onAction="#clkRegistrarAsistencia" text="Registrar Asistencia" />
       <Button fx:id="btnCancelar" layoutX="573.0" layoutY="467.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancelar" textFill="RED">
