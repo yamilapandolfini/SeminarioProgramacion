@@ -187,17 +187,16 @@ public class CargarPlanillaDeTrabajoController {
 		
 		if ((cantTrabajos != 0) || (cantInsumos != 0)) {
 			
-			ServicioDao servicioDAO = new ServicioDao();
-			Servicio servicio = new Servicio();
+			ServicioDao servicioDAO = new ServicioDao();			
 			
 			if (cantTrabajos != 0) {
 				ObservableList<Trabajo> listServicios = tblServicios.getItems();
-				servicio.setTrabajos(listServicios);
+				this.servicio.setTrabajos(listServicios);
 				cambio = true;
 			}
 			if (cantInsumos != 0)  {
 				ObservableList<Insumo> listInsumos = tblInsumos.getItems();
-				servicio.setInsumos(listInsumos);
+				this.servicio.setInsumos(listInsumos);
 				cambio = true;
 			}
 	

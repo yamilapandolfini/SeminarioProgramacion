@@ -226,8 +226,11 @@ public class NuevoTurnoController {
 		
 		TurnoDao turno = new TurnoDao();
 		ObservableList<Turno> list = turno.obtenerTodos();
-		Turno ultimoTurno = list.get(list.size() - 1);
-		int ultimoTurnoID = ultimoTurno.getId();
+		int ultimoTurnoID = 0;
+		if (list.size() != 0) {
+			Turno ultimoTurno = list.get(list.size()-1);
+			ultimoTurnoID = ultimoTurno.getId()+1;
+		}
 		txtNroTurno.setText(Integer.toString(ultimoTurnoID));
 		txtNroTurno.setEditable(false);
 		lblError.setText("");
