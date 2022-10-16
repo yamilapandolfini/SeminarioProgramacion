@@ -23,6 +23,7 @@ import com.equipo.model.Insumo;
 import com.equipo.model.Servicio;
 import com.equipo.model.Trabajo;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
@@ -94,21 +95,19 @@ public class GenerarConstanciaController {
 	}
 	
 	private void cargarInsumos() {
-		InsumoDao insumo = new InsumoDao();
-		ObservableList<Insumo> list = insumo.obtenerTodos();
-		tblNombre.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
-		tblMarca.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
-		tblModelo.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
-		tblNumeroParte.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
-		tblInsumos.setItems(list);
+		ObservableList<Insumo> listInsumos = FXCollections.observableArrayList(this.servicio.getInsumos());
+        tblNombre.setCellValueFactory(new PropertyValueFactory<Insumo, String>("nombre"));
+        tblMarca.setCellValueFactory(new PropertyValueFactory<Insumo, String>("marca"));
+        tblModelo.setCellValueFactory(new PropertyValueFactory<Insumo, String>("modelo"));
+        tblNumeroParte.setCellValueFactory(new PropertyValueFactory<Insumo, Integer>("numeroParte"));
+        tblInsumos.setItems(listInsumos);
 	}
 	
 	private void cargarServicios() {
-		TrabajoDao servicios = new TrabajoDao();
-		ObservableList<Trabajo> list = servicios.obtenerTodos();
-		tblServicio.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("trabajo"));
-		tblDescripcion.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("descripcion"));
-		tblServicios.setItems(list);
+        ObservableList<Trabajo> listTrabajos = FXCollections.observableArrayList(this.servicio.getTrabajos());
+        tblServicio.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("trabajo"));
+        tblDescripcion.setCellValueFactory(new PropertyValueFactory<Trabajo, String>("descripcion"));
+        tblServicios.setItems(listTrabajos);
 	}
 	
 	public Servicio getServicio() {
